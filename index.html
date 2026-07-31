@@ -3,139 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="XroHub - Video sharing platform">
     <title>XroHub - Video Sharing</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Righteous&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            background-color: #0f0f0f;
-            color: white;
-        }
-        .sidebar-item:hover {
-            background-color: #272727;
-        }
-        .video-card:hover .video-thumbnail {
-            border-radius: 0;
-        }
-    </style>
 </head>
-<body class="font-sans">
+<body class="bg-black text-white font-body antialiased">
+
+    <a href="#main" class="skip-link">Skip to main content</a>
 
     <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 h-14 bg-[#0f0f0f] flex items-center justify-between px-4 z-50">
-        <div class="flex items-center">
-            <button class="p-2 hover:bg-[#272727] rounded-full mr-4">
-                <span class="material-icons">menu</span>
+    <header id="header" class="fixed top-0 left-0 right-0 h-14 bg-black flex items-center justify-between px-3 sm:px-4 z-50">
+        <div class="flex items-center flex-1 min-w-0">
+            <button id="menuBtn" class="icon-btn" aria-label="Toggle sidebar">
+                <span class="material-icons-outlined">menu</span>
             </button>
-            <div class="flex items-center gap-1 cursor-pointer">
-                <span class="material-icons text-red-600 text-3xl">play_circle_filled</span>
-                <span class="text-xl font-bold tracking-tighter">XroHub</span>
-            </div>
+            <a href="/" class="flex items-center gap-1.5 shrink-0 ml-1 sm:ml-2 cursor-pointer select-none" aria-label="XroHub home">
+                <span class="material-icons-outlined text-[#ff3333] text-3xl">play_circle_fill</span>
+                <span class="font-logo text-2xl tracking-tight hidden xs:inline sm:inline">XroHub</span>
+            </a>
         </div>
 
-        <div class="flex-1 max-w-2xl px-4 flex items-center">
-            <div class="flex w-full">
-                <input type="text" placeholder="Search" 
-                    class="w-full bg-[#121212] border border-[#303030] rounded-l-full py-2 px-4 focus:outline-none focus:border-blue-500 placeholder-[#888888]">
-                <button class="bg-[#222222] border border-l-0 border-[#303030] rounded-r-full px-5 hover:bg-[#272727]">
-                    <span class="material-icons text-gray-300">search</span>
+        <form id="searchForm" class="hidden sm:flex flex-1 max-w-xl px-4 justify-center" role="search">
+            <div class="flex w-full max-w-md">
+                <input id="searchInput" type="search" placeholder="Search"
+                    class="w-full bg-[#121212] border border-[#303030] rounded-l-full py-2 px-4 text-sm focus:outline-none focus:border-[#ff3333] focus:ring-2 focus:ring-[#ff3333]/40 placeholder-[#888888]"
+                    aria-label="Search videos">
+                <button type="submit" class="bg-[#222222] border border-l-0 border-[#303030] rounded-r-full px-5 hover:bg-[#272727] transition-colors duration-200 cursor-pointer" aria-label="Search">
+                    <span class="material-icons-outlined text-gray-300 text-xl">search</span>
                 </button>
             </div>
-            <button class="ml-4 p-2 bg-[#181818] hover:bg-[#272727] rounded-full">
-                <span class="material-icons">mic</span>
+            <button type="button" class="icon-btn self-center ml-2 hidden lg:flex" aria-label="Voice search">
+                <span class="material-icons-outlined">mic</span>
             </button>
-        </div>
+        </form>
 
-        <div class="flex items-center gap-3">
-            <button class="p-2 hover:bg-[#272727] rounded-full">
-                <span class="material-icons">video_call</span>
+        <div class="flex items-center gap-1 sm:gap-2 shrink-0">
+            <button id="uploadBtn" class="icon-btn hidden sm:flex" aria-label="Create">
+                <span class="material-icons-outlined">video_call</span>
             </button>
-            <button class="p-2 hover:bg-[#272727] rounded-full">
-                <span class="material-icons">notifications</span>
+            <button id="notifBtn" class="icon-btn hidden sm:flex" aria-label="Notifications">
+                <span class="material-icons-outlined">notifications</span>
             </button>
-            <div class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center cursor-pointer ml-2">
-                <span>A</span>
-            </div>
+            <button id="mobileSearchBtn" class="icon-btn sm:hidden" aria-label="Search">
+                <span class="material-icons-outlined">search</span>
+            </button>
+            <div class="w-8 h-8 bg-gradient-to-br from-[#ff3333] to-[#ff8800] rounded-full flex items-center justify-center text-sm font-semibold ml-1 cursor-pointer select-none" role="img" aria-label="Avatar">A</div>
         </div>
     </header>
 
+    <!-- Mobile search bar (revealed) -->
+    <div id="mobileSearchBar" class="hidden sm:hidden fixed top-14 left-0 right-0 bg-black px-3 py-2 z-40 border-b border-[#303030]">
+        <div class="flex w-full">
+            <input id="mobileSearchInput" type="search" placeholder="Search"
+                class="w-full bg-[#121212] border border-[#303030] rounded-l-full py-2 px-4 text-sm focus:outline-none focus:border-[#ff3333] placeholder-[#888888]"
+                aria-label="Search videos">
+            <button type="button" id="mobileSearchSubmit" class="bg-[#222222] border border-l-0 border-[#303030] rounded-r-full px-5 hover:bg-[#272727] transition-colors duration-200 cursor-pointer" aria-label="Search">
+                <span class="material-icons-outlined text-gray-300 text-xl">search</span>
+            </button>
+        </div>
+    </div>
+
     <div class="flex pt-14">
         <!-- Sidebar -->
-        <aside class="w-60 fixed left-0 top-14 bottom-0 overflow-y-auto px-3 hidden lg:block">
+        <aside id="sidebar" class="fixed top-14 bottom-0 z-40 w-60 bg-black overflow-y-auto px-2 pb-6 transition-transform duration-300 lg:translate-x-0 lg:-translate-x-full lg:transition-[width] lg:overflow-x-hidden" aria-label="Sidebar">
             <div class="py-3 border-b border-[#303030]">
-                <div class="flex items-center p-3 sidebar-item rounded-lg cursor-pointer bg-[#272727]">
-                    <span class="material-icons mr-5">home</span>
-                    <span class="text-sm font-medium">Home</span>
-                </div>
-                <div class="flex items-center p-3 sidebar-item rounded-lg cursor-pointer">
-                    <span class="material-icons mr-5">explore</span>
-                    <span class="text-sm font-medium">Shorts</span>
-                </div>
-                <div class="flex items-center p-3 sidebar-item rounded-lg cursor-pointer">
-                    <span class="material-icons mr-5">subscriptions</span>
-                    <span class="text-sm font-medium">Subscriptions</span>
-                </div>
+                <a href="#" class="sidebar-item active" data-nav="home" aria-label="Home">
+                    <span class="material-icons-outlined">home</span>
+                    <span class="sidebar-label">Home</span>
+                </a>
+                <a href="#" class="sidebar-item" data-nav="shorts" aria-label="Shorts">
+                    <span class="material-icons-outlined">bolt</span>
+                    <span class="sidebar-label">Shorts</span>
+                </a>
+                <a href="#" class="sidebar-item" data-nav="subscriptions" aria-label="Subscriptions">
+                    <span class="material-icons-outlined">subscriptions</span>
+                    <span class="sidebar-label">Subscriptions</span>
+                </a>
             </div>
-            
             <div class="py-3 border-b border-[#303030]">
-                <div class="flex items-center p-3 sidebar-item rounded-lg cursor-pointer">
-                    <span class="material-icons mr-5">video_library</span>
-                    <span class="text-sm font-medium">Library</span>
-                </div>
-                <div class="flex items-center p-3 sidebar-item rounded-lg cursor-pointer">
-                    <span class="material-icons mr-5">history</span>
-                    <span class="text-sm font-medium">History</span>
-                </div>
+                <a href="#" class="sidebar-item" data-nav="library" aria-label="Library">
+                    <span class="material-icons-outlined">video_library</span>
+                    <span class="sidebar-label">Library</span>
+                </a>
+                <a href="#" class="sidebar-item" data-nav="history" aria-label="History">
+                    <span class="material-icons-outlined">history</span>
+                    <span class="sidebar-label">History</span>
+                </a>
+                <a href="#" class="sidebar-item" data-nav="watch-later" aria-label="Watch later">
+                    <span class="material-icons-outlined">watch_later</span>
+                    <span class="sidebar-label">Watch later</span>
+                </a>
+                <a href="#" class="sidebar-item" data-nav="liked" aria-label="Liked videos">
+                    <span class="material-icons-outlined">thumb_up</span>
+                    <span class="sidebar-label">Liked videos</span>
+                </a>
+            </div>
+            <div class="py-3">
+                <p class="px-3 pb-2 text-xs font-semibold text-[#aaaaaa] uppercase tracking-wide">Explore</p>
+                <a href="#" class="sidebar-item" data-nav="trending" aria-label="Trending">
+                    <span class="material-icons-outlined">trending_up</span>
+                    <span class="sidebar-label">Trending</span>
+                </a>
+                <a href="#" class="sidebar-item" data-nav="music" aria-label="Music">
+                    <span class="material-icons-outlined">music_note</span>
+                    <span class="sidebar-label">Music</span>
+                </a>
+                <a href="#" class="sidebar-item" data-nav="gaming" aria-label="Gaming">
+                    <span class="material-icons-outlined">sports_esports</span>
+                    <span class="sidebar-label">Gaming</span>
+                </a>
+            </div>
+            <div class="px-3 pt-4 text-xs text-[#717171] leading-relaxed">
+                <p>About &bull; Press &bull; Copyright<br>Contact &bull; Creators &bull; Advertise</p>
+                <p class="mt-2">XroHub &copy; 2026</p>
             </div>
         </aside>
 
+        <!-- Backdrop (mobile) -->
+        <div id="backdrop" class="fixed inset-0 bg-black/60 z-30 hidden" aria-hidden="true"></div>
+
         <!-- Main Content -->
-        <main class="lg:ml-60 flex-1 p-6">
-            <!-- Tags -->
-            <div class="flex gap-3 mb-6 overflow-x-auto no-scrollbar whitespace-nowrap">
-                <span class="bg-white text-black px-3 py-1 rounded-lg text-sm font-medium cursor-pointer">All</span>
-                <span class="bg-[#272727] px-3 py-1 rounded-lg text-sm font-medium cursor-pointer hover:bg-[#3f3f3f]">Music</span>
-                <span class="bg-[#272727] px-3 py-1 rounded-lg text-sm font-medium cursor-pointer hover:bg-[#3f3f3f]">Gaming</span>
-                <span class="bg-[#272727] px-3 py-1 rounded-lg text-sm font-medium cursor-pointer hover:bg-[#3f3f3f]">Live</span>
-                <span class="bg-[#272727] px-3 py-1 rounded-lg text-sm font-medium cursor-pointer hover:bg-[#3f3f3f]">News</span>
-                <span class="bg-[#272727] px-3 py-1 rounded-lg text-sm font-medium cursor-pointer hover:bg-[#3f3f3f]">Computer programming</span>
+        <main id="main" class="flex-1 min-w-0 lg:ml-60 transition-[margin] duration-300 p-4 sm:p-6">
+            <!-- Tag chips -->
+            <div class="flex gap-2.5 mb-6 overflow-x-auto no-scrollbar whitespace-nowrap pb-1" role="list" aria-label="Filter by category">
+                <span class="tag-chip" data-filter="all" role="listitem">All</span>
+                <span class="tag-chip" data-filter="music" role="listitem">Music</span>
+                <span class="tag-chip" data-filter="gaming" role="listitem">Gaming</span>
+                <span class="tag-chip" data-filter="live" role="listitem">Live</span>
+                <span class="tag-chip" data-filter="news" role="listitem">News</span>
+                <span class="tag-chip" data-filter="coding" role="listitem">Coding</span>
+                <span class="tag-chip" data-filter="vlog" role="listitem">Vlogs</span>
             </div>
 
-            <!-- Video Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 gap-y-8">
-                <!-- Video Card Template -->
-                <script>
-                    const videos = [
-                        { title: "Building a YouTube Clone with Tailwind CSS", channel: "DevChannel", views: "1.2M views", time: "2 days ago", thumb: "https://picsum.photos/seed/1/320/180" },
-                        { title: "Learn React in 10 Minutes", channel: "CodeMaster", views: "500K views", time: "5 hours ago", thumb: "https://picsum.photos/seed/2/320/180" },
-                        { title: "Top 10 VS Code Extensions", channel: "ToolTips", views: "80K views", time: "1 week ago", thumb: "https://picsum.photos/seed/3/320/180" },
-                        { title: "Modern Web Development 2026", channel: "WebWizard", views: "2.5M views", time: "1 month ago", thumb: "https://picsum.photos/seed/4/320/180" },
-                        { title: "Beautiful CSS Layouts", channel: "DesignPro", views: "300K views", time: "3 days ago", thumb: "https://picsum.photos/seed/5/320/180" },
-                        { title: "JavaScript Tips & Tricks", channel: "JSExpert", views: "150K views", time: "12 hours ago", thumb: "https://picsum.photos/seed/6/320/180" },
-                        { title: "Introduction to Arena AI", channel: "ArenaDev", views: "10K views", time: "1 hour ago", thumb: "https://picsum.photos/seed/7/320/180" },
-                        { title: "Future of Programming", channel: "FutureTech", views: "4.2M views", time: "2 weeks ago", thumb: "https://picsum.photos/seed/8/320/180" },
-                    ];
+            <div id="videoGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 gap-y-8"></div>
 
-                    document.write(videos.map(v => `
-                        <div class="video-card cursor-pointer group">
-                            <div class="relative mb-3">
-                                <img src="${v.thumb}" class="w-full aspect-video object-cover rounded-xl group-hover:rounded-none transition-all duration-200" alt="thumbnail">
-                                <span class="absolute bottom-2 right-2 bg-black bg-opacity-80 text-white text-xs px-2 py-1 rounded font-medium">10:00</span>
-                            </div>
-                            <div class="flex gap-3">
-                                <div class="w-9 h-9 rounded-full bg-gray-600 flex-shrink-0"></div>
-                                <div class="flex flex-col">
-                                    <h3 class="font-semibold text-base line-clamp-2 leading-tight">${v.title}</h3>
-                                    <p class="text-[#aaaaaa] text-sm mt-1 hover:text-white">${v.channel}</p>
-                                    <p class="text-[#aaaaaa] text-sm">${v.views} • ${v.time}</p>
-                                </div>
-                            </div>
-                        </div>
-                    `).join(''));
-                </script>
+            <div id="emptyState" class="hidden text-center py-20">
+                <span class="material-icons-outlined text-6xl text-[#303030]">search_off</span>
+                <h2 class="mt-4 text-xl font-semibold">No videos found</h2>
+                <p class="mt-1 text-[#aaaaaa] text-sm">Try a different search or filter.</p>
             </div>
         </main>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+    <!-- Player Modal -->
+    <div id="modal" class="fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true" aria-label="Video player">
+        <div class="absolute inset-0 bg-black/80" id="modalBackdrop"></div>
+        <div class="absolute inset-x-0 top-0 bottom-0 sm:inset-x-auto sm:top-1/2 sm:-translate-y-1/2 sm:max-w-3xl sm:mx-auto sm:px-6 overflow-y-auto">
+            <div class="bg-[#111111] border border-[#303030] rounded-2xl overflow-hidden sm:my-0">
+                <div id="playerArea" class="relative aspect-video bg-black">
+                    <img id="playerThumb" src="" alt="" class="absolute inset-0 w-full h-full object-cover" loading="eager">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <button id="playBtn" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/90 hover:bg-white flex items-center justify-center shadow-xl transition-transform duration-200 hover:scale-105 cursor-pointer" aria-label="Play video">
+                            <span class="material-icons-outlined text-black text-4xl ml-1">play_arrow</span>
+                        </button>
+                    </div>
+                    <div id="playerControls" class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 to-transparent p-3 flex items-center gap-3 opacity-0 transition-opacity duration-200">
+                        <span class="material-icons-outlined text-white text-xl cursor-pointer hover:text-[#ff3333] transition-colors duration-200" aria-label="Play">play_arrow</span>
+                        <span class="material-icons-outlined text-white text-xl cursor-pointer hover:text-[#ff3333] transition-colors duration-200" aria-label="Volume">volume_up</span>
+                        <div class="h-1 flex-1 bg-white/20 rounded-full overflow-hidden">
+                            <div id="progressBar" class="h-full w-0 bg-[#ff3333] transition-[width] duration-200"></div>
+                        </div>
+                        <span id="playerTime" class="text-xs text-white/90 tabular-nums">0:00 / 10:00</span>
+                    </div>
+                    <span class="material-icons-outlined absolute top-3 right-3 w-9 h-9 rounded-full bg-black/70 flex items-center justify-center cursor-pointer hover:bg-black transition-colors duration-200" id="closeModalBtn" aria-label="Close player">close</span>
+                </div>
+                <div class="p-4 sm:p-5">
+                    <h2 id="modalTitle" class="font-semibold text-base sm:text-lg leading-tight"></h2>
+                    <div class="mt-3 flex items-center gap-3">
+                        <div id="modalAvatar" class="w-9 h-9 rounded-full flex-shrink-0"></div>
+                        <div class="min-w-0">
+                            <p id="modalChannel" class="text-sm text-white font-medium"></p>
+                            <p id="modalMeta" class="text-xs text-[#aaaaaa]"></p>
+                        </div>
+                        <button class="ml-auto bg-[#ff3333] hover:bg-[#e02d2d] text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors duration-200 cursor-pointer">Subscribe</button>
+                    </div>
+                    <p id="modalDescription" class="mt-4 text-sm text-[#bbbbbb] bg-[#1a1a1a] rounded-xl p-4 leading-relaxed"></p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="app.js"></script>
