@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XroHub - Video Sharing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #0f0f0f;
+            color: white;
+        }
+        .sidebar-item:hover {
+            background-color: #272727;
+        }
+        .video-card:hover .video-thumbnail {
+            border-radius: 0;
+        }
+    </style>
+</head>
+<body class="font-sans">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 h-14 bg-[#0f0f0f] flex items-center justify-between px-4 z-50">
+        <div class="flex items-center">
+            <button class="p-2 hover:bg-[#272727] rounded-full mr-4">
+                <span class="material-icons">menu</span>
+            </button>
+            <div class="flex items-center gap-1 cursor-pointer">
+                <span class="material-icons text-red-600 text-3xl">play_circle_filled</span>
+                <span class="text-xl font-bold tracking-tighter">XroHub</span>
+            </div>
+        </div>
+
+        <div class="flex-1 max-w-2xl px-4 flex items-center">
+            <div class="flex w-full">
+                <input type="text" placeholder="Search" 
+                    class="w-full bg-[#121212] border border-[#303030] rounded-l-full py-2 px-4 focus:outline-none focus:border-blue-500 placeholder-[#888888]">
+                <button class="bg-[#222222] border border-l-0 border-[#303030] rounded-r-full px-5 hover:bg-[#272727]">
+                    <span class="material-icons text-gray-300">search</span>
+                </button>
+            </div>
+            <button class="ml-4 p-2 bg-[#181818] hover:bg-[#272727] rounded-full">
+                <span class="material-icons">mic</span>
+            </button>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <button class="p-2 hover:bg-[#272727] rounded-full">
+                <span class="material-icons">video_call</span>
+            </button>
+            <button class="p-2 hover:bg-[#272727] rounded-full">
+                <span class="material-icons">notifications</span>
+            </button>
+            <div class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center cursor-pointer ml-2">
+                <span>A</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex pt-14">
+        <!-- Sidebar -->
+        <aside class="w-60 fixed left-0 top-14 bottom-0 overflow-y-auto px-3 hidden lg:block">
+            <div class="py-3 border-b border-[#303030]">
+                <div class="flex items-center p-3 sidebar-item rounded-lg cursor-pointer bg-[#272727]">
+                    <span class="material-icons mr-5">home</span>
+                    <span class="text-sm font-medium">Home</span>
+                </div>
+                <div class="flex items-center p-3 sidebar-item rounded-lg cursor-pointer">
+                    <span class="material-icons mr-5">explore</span>
+                    <span class="text-sm font-medium">Shorts</span>
+                </div>
+                <div class="flex items-center p-3 sidebar-item rounded-lg cursor-pointer">
+                    <span class="material-icons mr-5">subscriptions</span>
+                    <span class="text-sm font-medium">Subscriptions</span>
+                </div>
+            </div>
+            
+            <div class="py-3 border-b border-[#303030]">
+                <div class="flex items-center p-3 sidebar-item rounded-lg cursor-pointer">
+                    <span class="material-icons mr-5">video_library</span>
+                    <span class="text-sm font-medium">Library</span>
+                </div>
+                <div class="flex items-center p-3 sidebar-item rounded-lg cursor-pointer">
+                    <span class="material-icons mr-5">history</span>
+                    <span class="text-sm font-medium">History</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="lg:ml-60 flex-1 p-6">
+            <!-- Tags -->
+            <div class="flex gap-3 mb-6 overflow-x-auto no-scrollbar whitespace-nowrap">
+                <span class="bg-white text-black px-3 py-1 rounded-lg text-sm font-medium cursor-pointer">All</span>
+                <span class="bg-[#272727] px-3 py-1 rounded-lg text-sm font-medium cursor-pointer hover:bg-[#3f3f3f]">Music</span>
+                <span class="bg-[#272727] px-3 py-1 rounded-lg text-sm font-medium cursor-pointer hover:bg-[#3f3f3f]">Gaming</span>
+                <span class="bg-[#272727] px-3 py-1 rounded-lg text-sm font-medium cursor-pointer hover:bg-[#3f3f3f]">Live</span>
+                <span class="bg-[#272727] px-3 py-1 rounded-lg text-sm font-medium cursor-pointer hover:bg-[#3f3f3f]">News</span>
+                <span class="bg-[#272727] px-3 py-1 rounded-lg text-sm font-medium cursor-pointer hover:bg-[#3f3f3f]">Computer programming</span>
+            </div>
+
+            <!-- Video Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 gap-y-8">
+                <!-- Video Card Template -->
+                <script>
+                    const videos = [
+                        { title: "Building a YouTube Clone with Tailwind CSS", channel: "DevChannel", views: "1.2M views", time: "2 days ago", thumb: "https://picsum.photos/seed/1/320/180" },
+                        { title: "Learn React in 10 Minutes", channel: "CodeMaster", views: "500K views", time: "5 hours ago", thumb: "https://picsum.photos/seed/2/320/180" },
+                        { title: "Top 10 VS Code Extensions", channel: "ToolTips", views: "80K views", time: "1 week ago", thumb: "https://picsum.photos/seed/3/320/180" },
+                        { title: "Modern Web Development 2026", channel: "WebWizard", views: "2.5M views", time: "1 month ago", thumb: "https://picsum.photos/seed/4/320/180" },
+                        { title: "Beautiful CSS Layouts", channel: "DesignPro", views: "300K views", time: "3 days ago", thumb: "https://picsum.photos/seed/5/320/180" },
+                        { title: "JavaScript Tips & Tricks", channel: "JSExpert", views: "150K views", time: "12 hours ago", thumb: "https://picsum.photos/seed/6/320/180" },
+                        { title: "Introduction to Arena AI", channel: "ArenaDev", views: "10K views", time: "1 hour ago", thumb: "https://picsum.photos/seed/7/320/180" },
+                        { title: "Future of Programming", channel: "FutureTech", views: "4.2M views", time: "2 weeks ago", thumb: "https://picsum.photos/seed/8/320/180" },
+                    ];
+
+                    document.write(videos.map(v => `
+                        <div class="video-card cursor-pointer group">
+                            <div class="relative mb-3">
+                                <img src="${v.thumb}" class="w-full aspect-video object-cover rounded-xl group-hover:rounded-none transition-all duration-200" alt="thumbnail">
+                                <span class="absolute bottom-2 right-2 bg-black bg-opacity-80 text-white text-xs px-2 py-1 rounded font-medium">10:00</span>
+                            </div>
+                            <div class="flex gap-3">
+                                <div class="w-9 h-9 rounded-full bg-gray-600 flex-shrink-0"></div>
+                                <div class="flex flex-col">
+                                    <h3 class="font-semibold text-base line-clamp-2 leading-tight">${v.title}</h3>
+                                    <p class="text-[#aaaaaa] text-sm mt-1 hover:text-white">${v.channel}</p>
+                                    <p class="text-[#aaaaaa] text-sm">${v.views} • ${v.time}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `).join(''));
+                </script>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
