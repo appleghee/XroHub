@@ -3,194 +3,627 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="XroHub - Video sharing platform">
-    <title>XroHub - Video Sharing</title>
+    <title>XroHub — Premium Video Streaming</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Righteous&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Righteous&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body class="bg-black text-white font-body antialiased">
+    <style>
+        :root {
+            --accent: #ff3333;
+            --bg-main: #0f0f0f;
+            --bg-surface: #181818;
+            --bg-hover: #272727;
+        }
 
-    <a href="#main" class="skip-link">Skip to main content</a>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-main);
+            color: #ffffff;
+        }
+        .font-logo { font-family: 'Righteous', cursive; }
+
+        /* Skip link for accessibility */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 0;
+            background: var(--accent);
+            color: white;
+            padding: 8px 16px;
+            z-index: 100;
+            border-radius: 0 0 8px 0;
+            font-size: 14px;
+        }
+        .skip-link:focus { left: 0; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #4a4a4a; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #6a6a6a; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Header */
+        .header-glass {
+            background: rgba(15, 15, 15, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Icon Button */
+        .icon-btn {
+            width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 9999px;
+            color: #d4d4d4;
+            transition: background-color 150ms ease, color 150ms ease;
+            cursor: pointer;
+        }
+        .icon-btn:hover { background-color: var(--bg-hover); color: #fff; }
+        .icon-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+        /* Sidebar */
+        .sidebar-item {
+            display: flex; align-items: center; gap: 24px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            font-size: 14px; font-weight: 400;
+            color: #e5e5e5;
+            transition: background-color 150ms ease, transform 150ms ease;
+            cursor: pointer; white-space: nowrap;
+        }
+        .sidebar-item:hover { background-color: var(--bg-hover); transform: translateX(4px); }
+        .sidebar-item.active { background-color: var(--bg-hover); font-weight: 600; }
+        .sidebar-item:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+        /* Mini sidebar */
+        body.sidebar-mini .sidebar-item { justify-content: center; gap: 0; padding: 16px 0; flex-direction: column; }
+        body.sidebar-mini .sidebar-label { display: none; }
+        body.sidebar-mini .mini-label { display: flex; font-size: 10px; margin-top: 4px; }
+        body.sidebar-mini #sidebar { width: 80px; padding: 12px 8px; }
+        body.sidebar-mini #sidebar .sidebar-header, 
+        body.sidebar-mini #sidebar .sidebar-section { display: none; }
+
+        /* Tag chips */
+        .tag-chip {
+            flex-shrink: 0;
+            background: rgba(255,255,255,0.1);
+            color: #e5e5e5;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px; font-weight: 500;
+            cursor: pointer;
+            transition: all 200ms ease;
+        }
+        .tag-chip:hover { background: #3f3f3f; color: #fff; }
+        .tag-chip.active {
+            background: #fff; color: #000;
+        }
+        .tag-chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+        /* Video cards */
+        .video-card { transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1); }
+        .video-card:hover { transform: translateY(-4px); }
+        .video-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 16px; }
+        .video-card:hover .video-thumbnail { transform: scale(1.05); }
+        .video-card:hover .thumbnail-overlay { opacity: 1; }
+
+        .thumbnail-wrapper { overflow: hidden; }
+        .video-thumbnail { transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1); }
+
+        /* Modal */
+        .modal-backdrop {
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        
+        /* Progress Bar */
+        .progress-track {
+            background: rgba(255,255,255,0.2);
+            height: 4px; border-radius: 2px; cursor: pointer;
+        }
+        .progress-fill {
+            background: var(--accent);
+            height: 100%; border-radius: 2px;
+            position: relative;
+            transition: width 200ms linear;
+        }
+        .progress-fill::after {
+            content: ''; position: absolute; right: -6px; top: -3px;
+            width: 10px; height: 10px; background: var(--accent);
+            border-radius: 50%; opacity: 0;
+            transition: opacity 150ms ease;
+        }
+        .progress-track:hover .progress-fill::after { opacity: 1; }
+
+        /* Toast */
+        .toast {
+            position: fixed; bottom: 24px; left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: #2d2d2d;
+            border: 1px solid #3f3f3f;
+            color: white; padding: 14px 24px;
+            border-radius: 12px; font-size: 14px;
+            z-index: 100; box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+            opacity: 0; pointer-events: none;
+            transition: transform 250ms ease, opacity 250ms ease;
+        }
+        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            * { transition: none !important; animation: none !important; }
+            .video-card:hover { transform: none; }
+            .video-card:hover .video-thumbnail { transform: none; }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <a href="#mainContent" class="skip-link">Skip to content</a>
+
+    <!-- Backdrop for mobile sidebar -->
+    <div id="backdrop" class="hidden fixed inset-0 bg-black/60 z-40 transition-opacity duration-300"></div>
 
     <!-- Header -->
-    <header id="header" class="fixed top-0 left-0 right-0 h-14 bg-black flex items-center justify-between px-3 sm:px-4 z-50">
-        <div class="flex items-center flex-1 min-w-0">
-            <button id="menuBtn" class="icon-btn" aria-label="Toggle sidebar">
+    <header class="header-glass fixed top-0 left-0 right-0 z-30 flex items-center justify-between px-4 h-16">
+        <div class="flex items-center gap-4">
+            <button id="menuBtn" class="icon-btn" aria-label="Toggle menu">
                 <span class="material-icons-outlined">menu</span>
             </button>
-            <a href="/" class="flex items-center gap-1.5 shrink-0 ml-1 sm:ml-2 cursor-pointer select-none" aria-label="XroHub home">
-                <span class="material-icons-outlined text-[#ff3333] text-3xl">play_circle_fill</span>
-                <span class="font-logo text-2xl tracking-tight hidden xs:inline sm:inline">XroHub</span>
+            <a href="#" class="flex items-center gap-1.5" aria-label="XroHub Home">
+                <span class="material-icons-outlined text-[#ff3333]" style="font-size: 32px;">play_circle_filled</span>
+                <span class="font-logo text-2xl tracking-tight hidden sm:block">XroHub</span>
             </a>
         </div>
 
-        <form id="searchForm" class="hidden sm:flex flex-1 max-w-xl px-4 justify-center" role="search">
-            <div class="flex w-full max-w-md">
-                <input id="searchInput" type="search" placeholder="Search"
-                    class="w-full bg-[#121212] border border-[#303030] rounded-l-full py-2 px-4 text-sm focus:outline-none focus:border-[#ff3333] focus:ring-2 focus:ring-[#ff3333]/40 placeholder-[#888888]"
-                    aria-label="Search videos">
-                <button type="submit" class="bg-[#222222] border border-l-0 border-[#303030] rounded-r-full px-5 hover:bg-[#272727] transition-colors duration-200 cursor-pointer" aria-label="Search">
-                    <span class="material-icons-outlined text-gray-300 text-xl">search</span>
+        <!-- Desktop Search -->
+        <form id="searchForm" class="hidden md:flex items-center flex-1 max-w-xl mx-8">
+            <div class="flex items-center w-full bg-[#121212] border border-[#303030] rounded-full overflow-hidden focus-within:border-[#1c62b9] transition-colors">
+                <input id="searchInput" type="text" placeholder="Search videos..." class="flex-1 bg-transparent px-4 py-2 text-sm outline-none placeholder-gray-500" aria-label="Search videos">
+                <button type="submit" class="px-5 py-2 border-l border-[#303030] hover:bg-[#303030] transition-colors" aria-label="Search">
+                    <span class="material-icons-outlined text-gray-400">search</span>
                 </button>
             </div>
-            <button type="button" class="icon-btn self-center ml-2 hidden lg:flex" aria-label="Voice search">
-                <span class="material-icons-outlined">mic</span>
+            <button type="button" aria-label="Voice search" class="ml-3 bg-[#181818] hover:bg-[#272727] rounded-full p-2.5 transition-colors">
+                <span class="material-icons-outlined text-gray-300">mic</span>
             </button>
         </form>
 
-        <div class="flex items-center gap-1 sm:gap-2 shrink-0">
-            <button id="uploadBtn" class="icon-btn hidden sm:flex" aria-label="Create">
-                <span class="material-icons-outlined">video_call</span>
-            </button>
-            <button id="notifBtn" class="icon-btn hidden sm:flex" aria-label="Notifications">
-                <span class="material-icons-outlined">notifications</span>
-            </button>
-            <button id="mobileSearchBtn" class="icon-btn sm:hidden" aria-label="Search">
+        <div class="flex items-center gap-2">
+            <button id="mobileSearchBtn" class="md:hidden icon-btn" aria-label="Search">
                 <span class="material-icons-outlined">search</span>
             </button>
-            <div class="w-8 h-8 bg-gradient-to-br from-[#ff3333] to-[#ff8800] rounded-full flex items-center justify-center text-sm font-semibold ml-1 cursor-pointer select-none" role="img" aria-label="Avatar">A</div>
+            <button id="uploadBtn" class="icon-btn" aria-label="Upload">
+                <span class="material-icons-outlined">video_call</span>
+            </button>
+            <button id="notifBtn" class="icon-btn relative" aria-label="Notifications">
+                <span class="material-icons-outlined">notifications</span>
+                <span class="absolute top-1 right-1 w-2 h-2 bg-[#ff3333] rounded-full"></span>
+            </button>
+            <button class="ml-2 w-9 h-9 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 flex items-center justify-center font-semibold text-sm shadow-lg hover:scale-105 transition-transform" aria-label="User profile">
+                U
+            </button>
         </div>
     </header>
 
-    <!-- Mobile search bar (revealed) -->
-    <div id="mobileSearchBar" class="hidden sm:hidden fixed top-14 left-0 right-0 bg-black px-3 py-2 z-40 border-b border-[#303030]">
-        <div class="flex w-full">
-            <input id="mobileSearchInput" type="search" placeholder="Search"
-                class="w-full bg-[#121212] border border-[#303030] rounded-l-full py-2 px-4 text-sm focus:outline-none focus:border-[#ff3333] placeholder-[#888888]"
-                aria-label="Search videos">
-            <button type="button" id="mobileSearchSubmit" class="bg-[#222222] border border-l-0 border-[#303030] rounded-r-full px-5 hover:bg-[#272727] transition-colors duration-200 cursor-pointer" aria-label="Search">
-                <span class="material-icons-outlined text-gray-300 text-xl">search</span>
+    <!-- Mobile Search Bar -->
+    <div id="mobileSearchBar" class="hidden fixed top-16 left-0 right-0 z-30 bg-[#0f0f0f] p-4 border-b border-gray-800">
+        <div class="flex items-center bg-[#181818] border border-gray-700 rounded-full overflow-hidden">
+            <input id="mobileSearchInput" type="text" placeholder="Search..." class="flex-1 bg-transparent px-4 py-2 outline-none">
+            <button id="mobileSearchSubmit" class="px-4 text-gray-400 hover:text-white">
+                <span class="material-icons-outlined">search</span>
             </button>
         </div>
     </div>
 
-    <div class="flex pt-14">
-        <!-- Sidebar -->
-        <aside id="sidebar" class="fixed top-14 bottom-0 z-40 w-60 bg-black overflow-y-auto px-2 pb-6 transition-transform duration-300 lg:translate-x-0 lg:-translate-x-full lg:transition-[width] lg:overflow-x-hidden" aria-label="Sidebar">
-            <div class="py-3 border-b border-[#303030]">
-                <a href="#" class="sidebar-item active" data-nav="home" aria-label="Home">
-                    <span class="material-icons-outlined">home</span>
-                    <span class="sidebar-label">Home</span>
-                </a>
-                <a href="#" class="sidebar-item" data-nav="shorts" aria-label="Shorts">
-                    <span class="material-icons-outlined">bolt</span>
-                    <span class="sidebar-label">Shorts</span>
-                </a>
-                <a href="#" class="sidebar-item" data-nav="subscriptions" aria-label="Subscriptions">
-                    <span class="material-icons-outlined">subscriptions</span>
-                    <span class="sidebar-label">Subscriptions</span>
-                </a>
-            </div>
-            <div class="py-3 border-b border-[#303030]">
-                <a href="#" class="sidebar-item" data-nav="library" aria-label="Library">
-                    <span class="material-icons-outlined">video_library</span>
-                    <span class="sidebar-label">Library</span>
-                </a>
-                <a href="#" class="sidebar-item" data-nav="history" aria-label="History">
-                    <span class="material-icons-outlined">history</span>
-                    <span class="sidebar-label">History</span>
-                </a>
-                <a href="#" class="sidebar-item" data-nav="watch-later" aria-label="Watch later">
-                    <span class="material-icons-outlined">watch_later</span>
-                    <span class="sidebar-label">Watch later</span>
-                </a>
-                <a href="#" class="sidebar-item" data-nav="liked" aria-label="Liked videos">
-                    <span class="material-icons-outlined">thumb_up</span>
-                    <span class="sidebar-label">Liked videos</span>
-                </a>
-            </div>
-            <div class="py-3">
-                <p class="px-3 pb-2 text-xs font-semibold text-[#aaaaaa] uppercase tracking-wide">Explore</p>
-                <a href="#" class="sidebar-item" data-nav="trending" aria-label="Trending">
-                    <span class="material-icons-outlined">trending_up</span>
-                    <span class="sidebar-label">Trending</span>
-                </a>
-                <a href="#" class="sidebar-item" data-nav="music" aria-label="Music">
-                    <span class="material-icons-outlined">music_note</span>
-                    <span class="sidebar-label">Music</span>
-                </a>
-                <a href="#" class="sidebar-item" data-nav="gaming" aria-label="Gaming">
-                    <span class="material-icons-outlined">sports_esports</span>
-                    <span class="sidebar-label">Gaming</span>
-                </a>
-            </div>
-            <div class="px-3 pt-4 text-xs text-[#717171] leading-relaxed">
-                <p>About &bull; Press &bull; Copyright<br>Contact &bull; Creators &bull; Advertise</p>
-                <p class="mt-2">XroHub &copy; 2026</p>
-            </div>
-        </aside>
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed left-0 top-16 bottom-0 w-60 bg-[#0f0f0f] z-20 overflow-y-auto no-scrollbar transition-transform duration-300 lg:translate-x-0 -translate-x-full p-3">
+        <nav class="flex flex-col gap-1">
+            <a href="#" class="sidebar-item active" data-filter="all">
+                <span class="material-icons-outlined">home</span>
+                <span class="sidebar-label">Home</span>
+                <span class="mini-label hidden">Home</span>
+            </a>
+            <a href="#" class="sidebar-item" data-filter="music">
+                <span class="material-icons-outlined">music_note</span>
+                <span class="sidebar-label">Music</span>
+                <span class="mini-label hidden">Music</span>
+            </a>
+            <a href="#" class="sidebar-item" data-filter="gaming">
+                <span class="material-icons-outlined">sports_esports</span>
+                <span class="sidebar-label">Gaming</span>
+                <span class="mini-label hidden">Gaming</span>
+            </a>
+            <a href="#" class="sidebar-item" data-filter="live">
+                <span class="material-icons-outlined">sensors</span>
+                <span class="sidebar-label">Live</span>
+                <span class="mini-label hidden">Live</span>
+            </a>
+            <a href="#" class="sidebar-item" data-filter="vlog">
+                <span class="material-icons-outlined">travel_explore</span>
+                <span class="sidebar-label">Vlogs</span>
+                <span class="mini-label hidden">Vlogs</span>
+            </a>
+        </nav>
+        
+        <hr class="border-gray-800 my-4 sidebar-section">
 
-        <!-- Backdrop (mobile) -->
-        <div id="backdrop" class="fixed inset-0 bg-black/60 z-30 hidden" aria-hidden="true"></div>
+        <div class="sidebar-section">
+            <p class="text-xs uppercase text-gray-500 font-bold mb-2 px-3">Explore</p>
+            <a href="#" class="sidebar-item">
+                <span class="material-icons-outlined">whatshot</span>
+                <span class="sidebar-label">Trending</span>
+            </a>
+            <a href="#" class="sidebar-item">
+                <span class="material-icons-outlined">subscriptions</span>
+                <span class="sidebar-label">Subscriptions</span>
+            </a>
+        </div>
+    </aside>
 
-        <!-- Main Content -->
-        <main id="main" class="flex-1 min-w-0 lg:ml-60 transition-[margin] duration-300 p-4 sm:p-6">
-            <!-- Tag chips -->
-            <div class="flex gap-2.5 mb-6 overflow-x-auto no-scrollbar whitespace-nowrap pb-1" role="list" aria-label="Filter by category">
-                <span class="tag-chip" data-filter="all" role="listitem">All</span>
-                <span class="tag-chip" data-filter="music" role="listitem">Music</span>
-                <span class="tag-chip" data-filter="gaming" role="listitem">Gaming</span>
-                <span class="tag-chip" data-filter="live" role="listitem">Live</span>
-                <span class="tag-chip" data-filter="news" role="listitem">News</span>
-                <span class="tag-chip" data-filter="coding" role="listitem">Coding</span>
-                <span class="tag-chip" data-filter="vlog" role="listitem">Vlogs</span>
+    <!-- Main Content -->
+    <main id="mainContent" class="lg:ml-60 pt-16 min-h-screen transition-all duration-300">
+        <!-- Filter Chips -->
+        <div class="sticky top-16 z-10 header-glass py-3 px-6 flex gap-3 overflow-x-auto no-scrollbar">
+            <button class="tag-chip active" data-filter="all">All</button>
+            <button class="tag-chip" data-filter="coding">Coding</button>
+            <button class="tag-chip" data-filter="music">Music</button>
+            <button class="tag-chip" data-filter="gaming">Gaming</button>
+            <button class="tag-chip" data-filter="live">Live</button>
+            <button class="tag-chip" data-filter="vlog">Vlogs</button>
+        </div>
+
+        <!-- Video Grid -->
+        <div class="px-6 py-6">
+            <div id="videoGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-5 gap-y-10"></div>
+            
+            <div id="emptyState" class="hidden flex-col items-center justify-center py-20 text-gray-400">
+                <span class="material-icons-outlined text-6xl mb-4 text-gray-600">search_off</span>
+                <p class="text-lg font-medium">No videos found</p>
+                <p class="text-sm">Try searching for something else.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Player -->
+    <div id="modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop">
+        <div class="bg-[#181818] w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl relative" role="dialog" aria-modal="true">
+            <!-- Video Player Area -->
+            <div class="relative aspect-video bg-black group">
+                <img id="playerThumb" src="" alt="" class="w-full h-full object-cover">
+                <div class="absolute inset-0 flex items-center justify-center bg-black/20">
+                    <button id="playBtn" class="w-20 h-20 bg-black/60 rounded-full flex items-center justify-center backdrop-blur-sm hover:bg-[#ff3333] transition-colors duration-300">
+                        <span class="material-icons-outlined text-white text-5xl">play_arrow</span>
+                    </button>
+                </div>
+                <button id="closeModalBtn" class="absolute top-4 right-4 w-10 h-10 bg-black/70 rounded-full flex items-center justify-center hover:bg-black/90 transition-colors">
+                    <span class="material-icons-outlined text-white">close</span>
+                </button>
+
+                <!-- Progress Bar -->
+                <div class="absolute bottom-0 left-0 right-0 px-4 pb-2 pt-12 bg-gradient-to-t from-black/80 to-transparent opacity-100 transition-opacity duration-300">
+                    <div class="progress-track w-full">
+                        <div id="progressBar" class="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <div id="playerTime" class="text-white text-xs mt-1 font-medium tabular-nums">0:00 / 10:00</div>
+                </div>
             </div>
 
-            <div id="videoGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 gap-y-8"></div>
-
-            <div id="emptyState" class="hidden text-center py-20">
-                <span class="material-icons-outlined text-6xl text-[#303030]">search_off</span>
-                <h2 class="mt-4 text-xl font-semibold">No videos found</h2>
-                <p class="mt-1 text-[#aaaaaa] text-sm">Try a different search or filter.</p>
-            </div>
-        </main>
-    </div>
-
-    <!-- Toast -->
-    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
-
-    <!-- Player Modal -->
-    <div id="modal" class="fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true" aria-label="Video player">
-        <div class="absolute inset-0 bg-black/80" id="modalBackdrop"></div>
-        <div class="absolute inset-x-0 top-0 bottom-0 sm:inset-x-auto sm:top-1/2 sm:-translate-y-1/2 sm:max-w-3xl sm:mx-auto sm:px-6 overflow-y-auto">
-            <div class="bg-[#111111] border border-[#303030] rounded-2xl overflow-hidden sm:my-0">
-                <div id="playerArea" class="relative aspect-video bg-black">
-                    <img id="playerThumb" src="" alt="" class="absolute inset-0 w-full h-full object-cover" loading="eager">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <button id="playBtn" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/90 hover:bg-white flex items-center justify-center shadow-xl transition-transform duration-200 hover:scale-105 cursor-pointer" aria-label="Play video">
-                            <span class="material-icons-outlined text-black text-4xl ml-1">play_arrow</span>
+            <!-- Video Info -->
+            <div class="p-6">
+                <h2 id="modalTitle" class="text-xl font-bold mb-3 leading-tight"></h2>
+                <div class="flex items-center justify-between flex-wrap gap-4">
+                    <div class="flex items-center gap-3">
+                        <div id="modalAvatar" class="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md"></div>
+                        <div>
+                            <h3 id="modalChannel" class="font-semibold text-base hover:text-gray-300 cursor-pointer"></h3>
+                            <p id="modalMeta" class="text-gray-400 text-sm"></p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button class="bg-[#272727] hover:bg-[#3f3f3f] px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 transition-colors">
+                            <span class="material-icons-outlined text-lg">thumb_up</span> Like
+                        </button>
+                        <button class="bg-[#272727] hover:bg-[#3f3f3f] px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 transition-colors">
+                            <span class="material-icons-outlined text-lg">share</span> Share
                         </button>
                     </div>
-                    <div id="playerControls" class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 to-transparent p-3 flex items-center gap-3 opacity-0 transition-opacity duration-200">
-                        <span class="material-icons-outlined text-white text-xl cursor-pointer hover:text-[#ff3333] transition-colors duration-200" aria-label="Play">play_arrow</span>
-                        <span class="material-icons-outlined text-white text-xl cursor-pointer hover:text-[#ff3333] transition-colors duration-200" aria-label="Volume">volume_up</span>
-                        <div class="h-1 flex-1 bg-white/20 rounded-full overflow-hidden">
-                            <div id="progressBar" class="h-full w-0 bg-[#ff3333] transition-[width] duration-200"></div>
-                        </div>
-                        <span id="playerTime" class="text-xs text-white/90 tabular-nums">0:00 / 10:00</span>
-                    </div>
-                    <span class="material-icons-outlined absolute top-3 right-3 w-9 h-9 rounded-full bg-black/70 flex items-center justify-center cursor-pointer hover:bg-black transition-colors duration-200" id="closeModalBtn" aria-label="Close player">close</span>
                 </div>
-                <div class="p-4 sm:p-5">
-                    <h2 id="modalTitle" class="font-semibold text-base sm:text-lg leading-tight"></h2>
-                    <div class="mt-3 flex items-center gap-3">
-                        <div id="modalAvatar" class="w-9 h-9 rounded-full flex-shrink-0"></div>
-                        <div class="min-w-0">
-                            <p id="modalChannel" class="text-sm text-white font-medium"></p>
-                            <p id="modalMeta" class="text-xs text-[#aaaaaa]"></p>
-                        </div>
-                        <button class="ml-auto bg-[#ff3333] hover:bg-[#e02d2d] text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors duration-200 cursor-pointer">Subscribe</button>
-                    </div>
-                    <p id="modalDescription" class="mt-4 text-sm text-[#bbbbbb] bg-[#1a1a1a] rounded-xl p-4 leading-relaxed"></p>
+                <div class="mt-4 bg-[#0f0f0f] p-4 rounded-lg">
+                    <p id="modalDescription" class="text-gray-300 text-sm leading-relaxed"></p>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="app.js"></script>
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script>
+        const VIDEOS = [
+            { title: "Building a YouTube Clone with Tailwind CSS", channel: "DevChannel", views: "1.2M views", time: "2 days ago", duration: "10:00", category: "coding", seed: 1, avatar: "#6366f1" },
+            { title: "Learn React in 10 Minutes", channel: "CodeMaster", views: "500K views", time: "5 hours ago", duration: "10:00", category: "coding", seed: 2, avatar: "#8b5cf6" },
+            { title: "Top 10 VS Code Extensions", channel: "ToolTips", views: "80K views", time: "1 week ago", duration: "8:24", category: "coding", seed: 3, avatar: "#0ea5e9" },
+            { title: "Modern Web Development 2026", channel: "WebWizard", views: "2.5M views", time: "1 month ago", duration: "24:15", category: "coding", seed: 4, avatar: "#10b981" },
+            { title: "Beautiful CSS Layouts You Must Try", channel: "DesignPro", views: "300K views", time: "3 days ago", duration: "12:40", category: "coding", seed: 5, avatar: "#f59e0b" },
+            { title: "Lo-fi Beats to Code To", channel: "ChillRadio", views: "4.8M views", time: "1 year ago", duration: "60:00", category: "music", seed: 6, avatar: "#ec4899" },
+            { title: "Synthwave Mix 2026", channel: "NeonWaves", views: "890K views", time: "6 hours ago", duration: "45:30", category: "music", seed: 7, avatar: "#06b6d4" },
+            { title: "Epic Gameplay - The Final Boss", channel: "ProGamer", views: "1.8M views", time: "2 weeks ago", duration: "18:52", category: "gaming", seed: 8, avatar: "#ef4444" },
+            { title: "Speedrunning Records Compilation", channel: "FastRunner", views: "640K views", time: "4 days ago", duration: "15:07", category: "gaming", seed: 9, avatar: "#84cc16" },
+            { title: "Live: Morning News Broadcast", channel: "XroNews", views: "120K watching", time: "live", duration: "LIVE", category: "live", seed: 10, avatar: "#f97316" },
+            { title: "A Day in the Life of a Developer", channel: "LifeByCode", views: "950K views", time: "3 weeks ago", duration: "21:33", category: "vlog", seed: 11, avatar: "#3b82f6" },
+            { title: "Travel Vlog: Hidden Gems of Vietnam", channel: "WanderLust", views: "2.1M views", time: "1 month ago", duration: "27:45", category: "vlog", seed: 12, avatar: "#14b8a6" },
+        ];
+
+        const state = {
+            query: "",
+            filter: "all",
+            modalOpen: false,
+            playing: false,
+            lastVideoId: null
+        };
+
+        const el = (id) => document.getElementById(id);
+        const $ = (sel) => document.querySelector(sel);
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        function thumbnail(v) {
+            return `https://picsum.photos/seed/${v.seed}/640/360`;
+        }
+
+        function cardTemplate(v) {
+            const isLive = v.duration === "LIVE";
+            return `
+                <div class="video-card cursor-pointer group" tabindex="0" role="link" data-id="${v.seed}" aria-label="${v.title} by ${v.channel}">
+                    <div class="relative mb-3 thumbnail-wrapper rounded-xl">
+                        <img src="${thumbnail(v)}" alt="Thumbnail: ${v.title}" class="video-thumbnail w-full aspect-video object-cover rounded-xl shadow-lg" loading="lazy" decoding="async">
+                        <span class="thumbnail-overlay absolute inset-0 bg-black/40 opacity-0 transition-opacity duration-300 flex items-center justify-center rounded-xl">
+                            <span class="material-icons-outlined text-white text-6xl drop-shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-300">play_circle</span>
+                        </span>
+                        <span class="absolute bottom-2 right-2 ${isLive ? "bg-[#ff3333] text-white font-bold" : "bg-black/90 text-white"} text-xs px-2 py-1 rounded-md font-medium tabular-nums shadow-md flex items-center gap-1">
+                            ${isLive ? '<span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>' : ''}
+                            ${v.duration}
+                        </span>
+                    </div>
+                    <div class="flex gap-3">
+                        <div class="w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center text-white text-sm font-bold shadow-md" style="background:linear-gradient(135deg, ${v.avatar}, ${v.avatar}99)">${v.channel[0]}</div>
+                        <div class="flex flex-col min-w-0">
+                            <h3 class="font-semibold text-[15px] line-clamp-2 leading-snug group-hover:text-gray-300 transition-colors">${v.title}</h3>
+                            <p class="text-[#aaaaaa] text-[13px] mt-1 hover:text-white transition-colors duration-200 cursor-pointer">${v.channel}</p>
+                            <p class="text-[#aaaaaa] text-[13px]">${v.views} • ${v.time}</p>
+                        </div>
+                    </div>
+                </div>`;
+        }
+
+        function renderVideos() {
+            const grid = el("videoGrid");
+            const query = state.query.trim().toLowerCase();
+            const filtered = VIDEOS.filter(v => {
+                const matchesFilter = state.filter === "all" || v.category === state.filter;
+                const matchesQuery = !query || v.title.toLowerCase().includes(query) || v.channel.toLowerCase().includes(query);
+                return matchesFilter && matchesQuery;
+            });
+
+            grid.innerHTML = filtered.map(cardTemplate).join("");
+            el("emptyState").classList.toggle("hidden", filtered.length > 0);
+            el("emptyState").classList.toggle("flex", filtered.length === 0);
+
+            grid.querySelectorAll(".video-card").forEach(card => {
+                card.addEventListener("click", () => openModal(Number(card.dataset.id)));
+                card.addEventListener("keydown", (e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        openModal(Number(card.dataset.id));
+                    }
+                });
+            });
+        }
+
+        function setActiveTag(tagEl) {
+            document.querySelectorAll(".tag-chip").forEach(t => t.classList.toggle("active", t === tagEl));
+        }
+
+        function updateSidebarActive(item) {
+            document.querySelectorAll(".sidebar-item").forEach(i => i.classList.toggle("active", i === item));
+        }
+
+        function showToast(message) {
+            const toast = el("toast");
+            toast.textContent = message;
+            toast.classList.add("show");
+            if (!reducedMotion) {
+                clearTimeout(showToast._t);
+                showToast._t = setTimeout(() => toast.classList.remove("show"), 2500);
+            }
+        }
+
+        function openModal(id) {
+            const v = VIDEOS.find(x => x.seed === id);
+            if (!v) return;
+            state.modalOpen = true;
+            state.playing = false;
+            
+            el("modalTitle").textContent = v.title;
+            el("modalChannel").textContent = v.channel;
+            el("modalMeta").textContent = `${v.views} • ${v.time}`;
+            el("modalAvatar").style.background = `linear-gradient(135deg, ${v.avatar}, ${v.avatar}99)`;
+            el("modalDescription").textContent = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. ${v.title}. Join ${v.channel} and explore more great content on XroHub.`;
+            el("playerThumb").src = thumbnail(v);
+            el("playerThumb").alt = `Thumbnail: ${v.title}`;
+            el("progressBar").style.width = "0%";
+            el("playerTime").textContent = "0:00 / 10:00";
+            el("playBtn").querySelector("span").textContent = "play_arrow";
+            
+            state.lastVideoId = id;
+            el("modal").classList.remove("hidden");
+            document.body.style.overflow = "hidden";
+            el("closeModalBtn").focus();
+        }
+
+        function closeModal() {
+            if (!state.modalOpen) return;
+            state.modalOpen = false;
+            state.playing = false;
+            clearInterval(togglePlay._timer);
+            el("modal").classList.add("hidden");
+            document.body.style.overflow = "";
+            const card = document.querySelector(`.video-card[data-id="${state.lastVideoId}"]`);
+            if (card) card.focus();
+            else el("menuBtn").focus();
+        }
+
+        function togglePlay() {
+            state.playing = !state.playing;
+            const icon = el("playBtn").querySelector("span");
+            icon.textContent = state.playing ? "pause" : "play_arrow";
+            
+            if (state.playing) {
+                let progress = 0;
+                clearInterval(togglePlay._timer);
+                togglePlay._timer = setInterval(() => {
+                    progress = Math.min(progress + 2, 100);
+                    el("progressBar").style.width = progress + "%";
+                    el("playerTime").textContent = `${Math.floor(progress/10)}:${(progress%10).toString().padStart(2, '0')} / 10:00`;
+                    
+                    if (progress >= 100) {
+                        clearInterval(togglePlay._timer);
+                        togglePlay();
+                        el("playBtn").querySelector("span").textContent = "replay";
+                    }
+                }, 200);
+            } else {
+                clearInterval(togglePlay._timer);
+            }
+        }
+
+        function setSidebarVisible(visible) {
+            const sidebar = el("sidebar");
+            const isDesktop = window.innerWidth >= 1024;
+            if (isDesktop) {
+                document.body.classList.toggle("sidebar-mini", !visible);
+                el("mainContent").classList.toggle("lg:ml-60", visible);
+                el("mainContent").classList.toggle("lg:ml-20", !visible);
+            } else {
+                sidebar.classList.toggle("-translate-x-full", !visible);
+                el("backdrop").classList.toggle("hidden", !visible);
+                el("backdrop").classList.toggle("opacity-0", !visible);
+                el("backdrop").classList.toggle("opacity-100", visible);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            renderVideos();
+
+            // Sidebar toggle
+            let sidebarVisible = true;
+            el("menuBtn").addEventListener("click", () => {
+                if (window.innerWidth >= 1024) {
+                    sidebarVisible = !sidebarVisible;
+                    setSidebarVisible(sidebarVisible);
+                } else {
+                    const sidebar = el("sidebar");
+                    const isOpen = !sidebar.classList.contains("-translate-x-full");
+                    if (isOpen) {
+                        el("backdrop").click();
+                    } else {
+                        sidebar.classList.remove("-translate-x-full");
+                        el("backdrop").classList.remove("hidden");
+                        el("backdrop").classList.add("opacity-100");
+                    }
+                }
+            });
+
+            el("backdrop").addEventListener("click", () => {
+                const sidebar = el("sidebar");
+                sidebar.classList.add("-translate-x-full");
+                el("backdrop").classList.add("hidden");
+            });
+
+            // Tag chips
+            document.querySelectorAll(".tag-chip").forEach(chip => {
+                chip.addEventListener("click", () => {
+                    state.filter = chip.dataset.filter;
+                    setActiveTag(chip);
+                    renderVideos();
+                });
+                chip.addEventListener("keydown", (e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        chip.click();
+                    }
+                });
+                chip.setAttribute("tabindex", "0");
+                chip.setAttribute("role", "button");
+            });
+
+            // Sidebar nav
+            document.querySelectorAll(".sidebar-item").forEach(item => {
+                item.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    updateSidebarActive(item);
+                    if (item.dataset.filter) {
+                        state.filter = item.dataset.filter;
+                        setActiveTag(document.querySelector(`.tag-chip[data-filter="${item.dataset.filter}"]`));
+                        renderVideos();
+                    }
+                    if (window.innerWidth < 1024) el("backdrop").click();
+                });
+            });
+
+            // Search (desktop + mobile)
+            el("searchForm").addEventListener("submit", (e) => {
+                e.preventDefault();
+                state.query = el("searchInput").value;
+                renderVideos();
+            });
+            el("mobileSearchBtn").addEventListener("click", () => {
+                el("mobileSearchBar").classList.toggle("hidden");
+                el("mobileSearchInput").focus();
+            });
+            el("mobileSearchSubmit").addEventListener("click", () => {
+                state.query = el("mobileSearchInput").value;
+                renderVideos();
+                el("mobileSearchBar").classList.add("hidden");
+            });
+            el("mobileSearchInput").addEventListener("keydown", (e) => {
+                if (e.key === "Enter") {
+                    state.query = e.target.value;
+                    renderVideos();
+                    el("mobileSearchBar").classList.add("hidden");
+                }
+            });
+
+            // Demo buttons
+            el("uploadBtn").addEventListener("click", () => showToast("Upload feature coming soon"));
+            el("notifBtn").addEventListener("click", () => showToast("No new notifications"));
+            document.querySelector('[aria-label="Voice search"]').addEventListener("click", () => showToast("Voice search coming soon"));
+
+            // Modal
+            el("closeModalBtn").addEventListener("click", closeModal);
+            el("modal").addEventListener("click", (e) => {
+                if (e.target.id === "modal") closeModal();
+            });
+            el("playBtn").addEventListener("click", togglePlay);
+            
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") {
+                    if (state.modalOpen) closeModal();
+                    else {
+                        const sidebar = el("sidebar");
+                        if (window.innerWidth < 1024 && !sidebar.classList.contains("-translate-x-full")) el("backdrop").click();
+                    }
+                }
+                if (e.key === " " && state.modalOpen) {
+                    e.preventDefault();
+                    togglePlay();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
