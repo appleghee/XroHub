@@ -38,7 +38,6 @@ __pycache__/
 *.so
 
 # Compressed files
-*.zip
 *.gz
 *.tar
 *.tgz
@@ -50,6 +49,7 @@ __pycache__/
 *.pdf
 *.docx
 
-# PowerPoint files
-*.pptx
+# Allow specific teaching materials
+!Bo_tai_lieu_Hoang_Van_Thu_THPT_Uong_Bi.zip
+!Bo_tai_lieu_Hoang_Van_Thu_THPT_Uong_Bi/
 ```
