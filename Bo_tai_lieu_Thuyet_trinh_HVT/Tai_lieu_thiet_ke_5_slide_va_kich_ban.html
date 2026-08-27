@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bộ Thiết kế 5 Slide &amp; Kịch bản — Đồng chí Hoàng Văn Thụ &amp; Trường THPT HVT (Uông Bí)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;1,600&family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#C8102E; --red2:#7A0C1E; --gold:#F2B705; --gold-d:#D99A00;
+  --brick:#8C5A3C; --navy:#1B2A4A; --cream:#F7F2E7; --ink:#232A33;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#EFEAE0;color:var(--ink);font-family:'Be Vietnam Pro',Roboto,Arial,sans-serif;font-size:16px;line-height:1.6}
+.wrap{max-width:1240px;margin:0 auto;padding:0 22px 80px}
+
+/* ===== HERO ===== */
+.hero{margin:26px 0 0;border-radius:22px;overflow:hidden;position:relative;
+  background:linear-gradient(130deg,#141F38 0%,#1B2A4A 48%,#4A0D18 100%);color:#fff;
+  box-shadow:0 18px 50px rgba(20,25,40,.35)}
+.hero .star{position:absolute;right:-40px;top:-110px;font-size:430px;color:rgba(242,183,5,.10);line-height:1;font-family:Montserrat}
+.hero .stripe{position:absolute;left:0;top:0;width:12px;height:100%;background:linear-gradient(180deg,var(--red),var(--red2))}
+.hero-in{padding:44px 52px 38px;position:relative}
+.hero .kicker{color:var(--gold);font:800 13px Montserrat;letter-spacing:4px;text-transform:uppercase}
+.hero h1{font:900 44px/1.12 Montserrat;margin:14px 0 6px;max-width:940px}
+.hero h1 .gold{color:var(--gold)}
+.hero .sub{font:italic 600 20px 'Playfair Display';color:#F3EAD6;margin:6px 0 18px}
+.hero .meta{display:flex;flex-wrap:wrap;gap:10px}
+.hero .meta span{background:rgba(255,255,255,.10);border:1px solid rgba(242,183,5,.45);border-radius:999px;padding:5px 14px;font-size:13px;font-weight:600}
+.hero .note{margin-top:16px;font-size:13.5px;color:#D9CFBB;border-top:1px dashed rgba(242,183,5,.4);padding-top:12px}
+
+/* ===== TOC ===== */
+.toc{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0 8px}
+.toc a{display:block;background:#fff;border:1px solid #E4DBC6;border-radius:14px;padding:14px 16px;text-decoration:none;color:var(--ink);box-shadow:0 4px 14px rgba(60,45,20,.06)}
+.toc a:hover{border-color:var(--gold);transform:translateY(-2px)}
+.toc .t-num{font:800 12px Montserrat;color:var(--red);letter-spacing:2px}
+.toc .t-title{font:800 16px Montserrat;margin-top:3px}
+.toc .t-desc{font-size:13px;color:#6E6250;margin-top:2px}
+
+/* ===== SECTIONS ===== */
+section{margin:54px 0}
+.sec-head{display:flex;align-items:center;gap:16px;margin-bottom:6px}
+.sec-num{flex:0 0 auto;width:58px;height:58px;border-radius:16px;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font:900 24px Montserrat;box-shadow:0 8px 18px rgba(200,16,46,.35)}
+.sec-head h2{font:900 27px Montserrat;color:var(--navy);margin:0}
+.sec-head .sec-sub{font-size:14px;color:#6E6250}
+h3.sub{font:800 20px Montserrat;color:var(--red2);border-left:6px solid var(--gold);padding-left:12px;margin:38px 0 14px}
+h4.mini{font:800 15px Montserrat;color:var(--navy);margin:22px 0 8px;letter-spacing:.5px;text-transform:uppercase}
+p.lead{color:#4C4436;max-width:980px}
+
+/* ===== PART 1: PALETTE ===== */
+.swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.swatch{background:#fff;border-radius:16px;overflow:hidden;border:1px solid #E4DBC6;box-shadow:0 6px 16px rgba(60,45,20,.07);cursor:pointer;transition:transform .15s}
+.swatch:hover{transform:translateY(-3px)}
+.swatch .sw{height:84px;position:relative}
+.swatch .sw .pct{position:absolute;right:10px;bottom:8px;background:rgba(255,255,255,.85);color:#222;font:800 11px Montserrat;border-radius:999px;padding:2px 9px}
+.swatch .swb{padding:10px 14px 13px}
+.swatch .nm{font:800 15px Montserrat}
+.swatch .hex{display:inline-block;font:600 13px 'Courier New',monospace;background:#F3ECD9;border-radius:6px;padding:1px 8px;margin-top:4px}
+.swatch .use{font-size:12.5px;color:#6E6250;margin-top:4px}
+.ratio{display:flex;height:56px;border-radius:14px;overflow:hidden;border:1px solid #E4DBC6;font:800 13px Montserrat;color:#fff}
+.ratio div{display:flex;align-items:center;justify-content:center}
+.dd{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.dd .do,.dd .dont{border-radius:14px;padding:14px 18px;font-size:14.5px}
+.dd .do{background:#F0F6EC;border:1px solid #BFD8B4}
+.dd .dont{background:#FBEFEF;border:1px solid #E5BDBD}
+.dd b{font-family:Montserrat}
+.dd ul{margin:6px 0 0;padding-left:20px}
+
+/* ===== FONTS ===== */
+.fonts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.font-card{background:#fff;border:1px solid #E4DBC6;border-radius:16px;overflow:hidden}
+.font-card .fc-head{padding:10px 16px;background:var(--navy);color:#fff;font:800 12.5px Montserrat;letter-spacing:1px}
+.font-card .fc-sample{padding:18px 16px 6px}
+.font-card .fc-name{font-size:13px;color:#6E6250;padding:0 16px 14px}
+table.spec{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 6px 16px rgba(60,45,20,.06)}
+table.spec th,table.spec td{border:1px solid #E7DEC9;padding:10px 14px;vertical-align:top;text-align:left;font-size:14.5px}
+table.spec th{background:#F3ECD9;font:800 13px Montserrat;color:var(--red2);text-transform:uppercase;letter-spacing:.5px}
+table.spec td.k{width:225px;font-weight:700;color:var(--navy);background:#FBF7EC}
+.tbl-wrap{overflow-x:auto;border-radius:14px}
+
+/* ===== SLIDE MOCKUPS ===== */
+.slide-scroll{overflow-x:auto;border-radius:16px;box-shadow:0 14px 38px rgba(35,25,10,.18);border:1px solid #D8CFBC}
+.chrome{background:var(--navy);color:#fff;font:700 12.5px Montserrat;padding:8px 16px;display:flex;justify-content:space-between;align-items:center;letter-spacing:.5px}
+.chrome .dot{color:var(--gold)}
+.slide{width:1200px;height:675px;position:relative;overflow:hidden;font-family:'Be Vietnam Pro',Arial,sans-serif}
+.ph{position:absolute;border:3px dashed rgba(255,255,255,.8);border-radius:14px;background:rgba(255,255,255,.07);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:18px;gap:8px}
+.ph .ic{font-size:44px}
+.ph .t1{font:800 16px Montserrat;letter-spacing:1px;color:var(--gold)}
+.ph .t2{font-size:13px;color:#EDE4D2;max-width:330px}
+.ph-light{border:3px dashed #C4B69A;background:rgba(140,90,60,.06);color:#6E6250}
+.ph-light .t1{color:var(--red2)}
+.ph-light .t2{color:#6E6250}
+caption-note,.capnote{font-size:13px;color:#6E6250;margin-top:8px}
+
+/* timeline (slide 2 mockup) */
+.tl{position:absolute;left:56px;top:138px;width:520px}
+.tl .line{position:absolute;left:17px;top:8px;bottom:8px;width:4px;background:var(--red);border-radius:2px}
+.tl .it{position:relative;padding:0 0 0 52px;margin-bottom:22px}
+.tl .dot{position:absolute;left:8px;top:2px;width:18px;height:18px;border-radius:50%;background:var(--gold);border:4px solid var(--red)}
+.tl .yr{font:800 19px Montserrat;color:var(--red2)}
+.tl .ds{font-size:14px;color:var(--navy)}
+
+/* step strip (slide 3) */
+.steps{position:absolute;left:56px;right:56px;bottom:36px;display:flex;gap:10px}
+.steps .st{flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(242,183,5,.5);border-radius:12px;padding:10px 12px;color:#fff;text-align:center}
+.steps .st b{display:block;color:var(--gold);font:800 15px Montserrat}
+.steps .st span{font-size:12px;color:#EFE6D4}
+.steps .arr{align-self:center;color:var(--gold);font:900 22px Montserrat}
+
+/* cards slide 4 */
+.hcards{position:absolute;left:56px;right:56px;top:150px;display:flex;gap:20px}
+.hcards .hc{flex:1;background:#fff;border-radius:14px;border-top:8px solid var(--red);box-shadow:0 8px 20px rgba(60,45,20,.12);padding:14px 16px}
+.hcards .hc.alt{border-top-color:var(--brick)}
+.hcards .hc.nv{border-top-color:var(--navy)}
+.hcards .hc.gd{border-top-color:var(--gold-d)}
+.hcards .yr{font:800 21px Montserrat;color:var(--red2)}
+.hcards .ti{font:800 13.5px Montserrat;color:var(--navy);letter-spacing:.5px;margin-bottom:6px}
+.hcards ul{margin:0;padding-left:16px;font-size:13px;color:#3A4350}
+.pills{position:absolute;left:56px;right:56px;bottom:26px;display:flex;gap:12px;justify-content:center}
+.pills span{border:2px solid var(--gold-d);color:#7a5c00;background:#FFF6DC;border-radius:999px;padding:6px 18px;font:700 13.5px Montserrat}
+
+/* slide 5 cards */
+.qgrid{position:absolute;left:56px;top:150px;width:660px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.qgrid .qc{background:#fff;border-radius:14px;padding:14px 16px;box-shadow:0 8px 20px rgba(60,45,20,.10);border-left:6px solid var(--gold)}
+.qgrid .qn{display:inline-flex;width:34px;height:34px;border-radius:50%;background:var(--red);color:#fff;font:800 15px Montserrat;align-items:center;justify-content:center;margin-bottom:6px}
+.qgrid .qt{font:800 14.5px Montserrat;color:var(--navy)}
+.qgrid .qs{font-size:12.5px;color:#6E6250;margin-top:2px}
+
+/* ===== DIALOGUE (Part 3) ===== */
+.dialogue{background:#fff;border:1px solid #E7DEC9;border-left:7px solid var(--red);border-radius:14px;padding:16px 20px;margin:14px 0;box-shadow:0 5px 14px rgba(60,45,20,.06)}
+.dialogue .spk{display:inline-block;background:var(--navy);color:#fff;border-radius:999px;padding:3px 14px;font:700 13px Montserrat;letter-spacing:.5px;margin-bottom:8px}
+.dialogue .spk.b{background:var(--red)}
+.dialogue .spk.c{background:var(--brick)}
+.dialogue p{margin:8px 0;font-size:15.5px}
+.cue{background:#FFF6DC;border:1px dashed var(--gold-d);color:#7a5c00;border-radius:10px;padding:9px 14px;font-size:14px;font-style:italic;margin:10px 0}
+.cue b{font-style:normal}
+.mark{background:#FDECEA;border:1px dashed var(--red);color:var(--red2);border-radius:10px;padding:9px 14px;font-size:14px;margin:10px 0}
+ol.timelist li{margin:6px 0}
+
+/* misc */
+.chip{display:inline-block;background:var(--cream);border:1px solid #E0D5BE;border-radius:8px;padding:2px 10px;font:700 12.5px Montserrat;color:var(--red2)}
+.filecard{background:#fff;border:2px solid var(--gold-d);border-radius:16px;padding:16px 20px;margin:14px 0;display:flex;gap:14px;align-items:center}
+.filecard .fi{font-size:34px}
+footer.doc{margin-top:70px;border-top:2px solid #DCD2BC;padding-top:18px;color:#6E6250;font-size:13.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media (max-width:860px){.toc,.swatches,.fonts,.dd{grid-template-columns:1fr}.hero h1{font-size:32px}}
+@media print{
+  body{background:#fff}
+  .toc{display:none}
+  section{page-break-inside:avoid}
+  .slide-scroll{overflow:visible;box-shadow:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="star">★</div><div class="stripe"></div>
+  <div class="hero-in">
+    <div class="kicker">Bộ tài liệu thiết kế Canva / PPT + Kịch bản chi tiết</div>
+    <h1>ĐỒNG CHÍ HOÀNG VĂN THỤ <span class="gold">(1909 – 1944)</span><br>&amp; TRƯỜNG THPT HOÀNG VĂN THỤ</h1>
+    <div class="sub">"Ngọn đuốc bất diệt &amp; mái trường mang tên Người" — Bài tập lớn Lịch sử • Hoạt động trải nghiệm</div>
+    <div class="meta">
+      <span>🏫 Trường THPT Hoàng Văn Thụ — Uông Bí, Quảng Ninh</span>
+      <span>🖼️ 5 slide (16:9)</span>
+      <span>🗺️ Mindmap A3 để in</span>
+      <span>🎙️ Kịch bản 8 phút + Q&amp;A</span>
+    </div>
+    <div class="note">📦 Tệp kèm theo trong thư mục: <b>Tai_lieu_thiet_ke_5_slide_va_kich_ban.html</b> (tài liệu này) · <b>Mindmap_A3_Hoang_Van_Thu.svg</b> (in A3) · <b>Draft_5_slide_HVT.pptx</b> (nhập thẳng vào Canva). Toàn bộ số liệu sử dụng đúng dữ liệu nhóm đã xác thực; chỗ nào cần kiểm chứng thêm được đánh dấu <b>[XÁC THỰC]</b>.</div>
+  </div>
+</header>
+
+<!-- ================= TOC ================= -->
+<nav class="toc">
+  <a href="#phan1"><div class="t-num">PHẦN 1</div><div class="t-title">Bảng thiết kế đồ họa</div><div class="t-desc">Bảng màu có mã hex · Font có sẵn trên Canva · Sơ đồ tư duy A3 in nộp</div></a>
+  <a href="#phan2"><div class="t-num">PHẦN 2</div><div class="t-title">Blueprint 5 slide</div><div class="t-desc">Tiêu đề · Bố cục visual · Văn bản chính xác · Ảnh bạn sẽ gửi — kèm mockup trực quan</div></a>
+  <a href="#phan3"><div class="t-num">PHẦN 3</div><div class="t-title">Kịch bản chi tiết</div><div class="t-desc">Lời thoại trọn câu theo từng slide · phân vai · cue kỹ thuật · Q&amp;A dự phòng · checklist</div></a>
+</nav>
+
+<!-- ================= HƯỚNG DẪN NHANH ================= -->
+<section id="huongdan">
+  <div class="sec-head"><div class="sec-num">⚡</div><div><h2>Dùng bộ tài liệu này trong 6 bước</h2><div class="sec-sub">Tổng thời gian dựng bài: khoảng 2–3 giờ làm việc nhóm</div></div></div>
+  <div class="tbl-wrap"><table class="spec">
+    <tr><th style="width:56px">Bước</th><th>Việc cần làm</th><th style="width:300px">Dùng tài liệu nào</th></tr>
+    <tr><td><b>1</b></td><td>Mở Canva → tạo thiết kế <b>Trình chiếu 16:9</b> (hoặc nhập file <b>Draft_5_slide_HVT.pptx</b> vào Canva để có sẵn khung sườn).</td><td>Phần 2 + file PPTX đính kèm</td></tr>
+    <tr><td><b>2</b></td><td>Thiết lập bảng màu: mỗi lần đổi màu, dán mã hex vào ô <b>Custom color (+)</b> của Canva.</td><td>Phần 1.1 — 6 mã màu</td></tr>
+    <tr><td><b>3</b></td><td>Chọn font: gõ tên font vào thanh tìm kiếm font của Canva.</td><td>Phần 1.2 — 3 font</td></tr>
+    <tr><td><b>4</b></td><td>Dựng từng slide theo mockup: bố cục, vị trí khung ảnh, chữ hiển thị y hệt bảng "Văn bản chính xác".</td><td>Phần 2 — từng slide</td></tr>
+    <tr><td><b>5</b></td><td>Gửi ảnh thật vào các khung [ẢNH…]; in sơ đồ tư duy A3 nộp kèm.</td><td>Phần 1.3 + danh sách ảnh Phần 2.6</td></tr>
+    <tr><td><b>6</b></td><td>Tập diễn theo kịch bản, bấm đồng hồ đủ 8 phút, học thuộc cue chuyển slide.</td><td>Phần 3</td></tr>
+  </table></div>
+</section>
+
+<!-- ================= PHẦN 1 ================= -->
+<section id="phan1">
+  <div class="sec-head"><div class="sec-num">1</div><div><h2>PHẦN 1 — BẢNG THIẾT KẾ ĐỒ HOẠ</h2><div class="sec-sub">Dành cho nhóm thiết kế Canva: bảng màu · font chữ · sơ đồ tư duy A3</div></div></div>
+  <p class="lead">Ý tưởng chủ đạo của toàn bộ thiết kế: <b>"Từ xà lim số 1 đến phòng học đầy nắng"</b> — màu sắc trang trọng của lịch sử (đỏ cờ, nâu gạch, giấy cũ) gặp sự hiện đại, sáng của ngôi trường hôm nay (navy, vàng đồng). Mọi slide đều theo một trật tự thị giác nhất quán: <span class="chip">Tiêu đề đỏ/navy</span> → <span class="chip">Nội dung trên nền kem</span> → <span class="chip">Điểm nhấn vàng đồng</span>.</p>
+
+  <h3 class="sub">1.1 · Bảng màu (Color Palette) — bấm vào ô màu để copy mã</h3>
+  <div class="swatches">
+    <div class="swatch" onclick="cp('#C8102E',this)"><div class="sw" style="background:#C8102E"><span class="pct">10% — MÀU CHỦ ĐẠO</span></div><div class="swb"><div class="nm">Đỏ cờ cách mạng</div><span class="hex">#C8102E</span><div class="use">Tiêu đề chính, số năm, timeline, nét nhấn. Dùng cho 3 thông tin quan trọng nhất mỗi slide.</div></div></div>
+    <div class="swatch" onclick="cp('#7A0C1E',this)"><div class="sw" style="background:#7A0C1E"><span class="pct">MÀU PHỤ</span></div><div class="swb"><div class="nm">Đỏ trầm (đỏ nhân tạo)</div><span class="hex">#7A0C1E</span><div class="use">Nền tối của slide bìa &amp; slide "xà lim số 1", dải tiêu đề, gradient đậm.</div></div></div>
+    <div class="swatch" onclick="cp('#F2B705',this)"><div class="sw" style="background:#F2B705"><span class="pct">ĐIỂM NHẤN</span></div><div class="swb"><div class="nm">Vàng đồng</div><span class="hex">#F2B705</span><div class="use">Ngôi sao, gạch chân, viền khung ảnh tư liệu, chữ nhấn trên nền tối. Chiếm &lt;10%.</div></div></div>
+    <div class="swatch" onclick="cp('#8C5A3C',this)"><div class="sw" style="background:#8C5A3C"><span class="pct">MÀU PHỤ</span></div><div class="swb"><div class="nm">Nâu gạch lịch sử</div><span class="hex">#8C5A3C</span><div class="use">Viền khung A3, icon "nghề thợ – nhà in – báo chí", họa tiết giấy cũ.</div></div></div>
+    <div class="swatch" onclick="cp('#1B2A4A',this)"><div class="sw" style="background:#1B2A4A"><span class="pct">30% — CÂN BẰNG</span></div><div class="swb"><div class="nm">Xanh navy hiện đại</div><span class="hex">#1B2A4A</span><div class="use">Dải tiêu đề slide, bảng nội dung, panel thông điệp — đại diện cho ngôi trường hiện nay.</div></div></div>
+    <div class="swatch" onclick="cp('#F7F2E7',this)"><div class="sw" style="background:#F7F2E7;border-bottom:1px solid #eee"><span class="pct">60% — NỀN</span></div><div class="swb"><div class="nm">Kem giấy dó</div><span class="hex">#F7F2E7</span><div class="use">Nền chính các slide nội dung (thay cho trắng tinh), nền thẻ quote, nền SVG mindmap.</div></div></div>
+  </div>
+
+  <h4 class="mini">Quy tắc phối màu 60 – 30 – 10</h4>
+  <div class="ratio">
+    <div style="flex:6;background:#F7F2E7;color:#6E6250">60% — Nền kem giấy</div>
+    <div style="flex:3;background:#1B2A4A">30% — Navy / Đỏ trầm</div>
+    <div style="flex:1;background:#F2B705;color:#5c4400">10%</div>
+  </div>
+  <div class="dd">
+    <div class="do"><b>✔ NÊN</b><ul>
+      <li>1 slide chỉ dùng <b>tối đa 3 màu</b> trong bảng (trừ nền).</li>
+      <li>Ảnh tư liệu đen trắng → viền vàng đồng 3–4px để ảnh "nổi" trên nền kem.</li>
+      <li>Chữ trên nền tối: trắng kem #F7F2E7; chữ nhấn: vàng #F2B705.</li>
+      <li>Slide cảm xúc (slide 3) dùng nền đỏ trầm → cả lớp lặng lại.</li>
+    </ul></div>
+    <div class="dont"><b>✘ TRÁNH</b><ul>
+      <li>Không dùng màu neon/tím-xanh Facebook làm mất không khí lịch sử.</li>
+      <li>Không đổ bóng chữ, không uốn cong chữ Art Text cho tiêu đề.</li>
+      <li>Không đặt chữ trực tiếp lên mặt ảnh tư liệu — luôn có lớp phủ tối hoặc khung riêng.</li>
+      <li><b>Tuyệt đối không dùng ảnh AI thay chân dung liệt sĩ</b> — chỉ dùng ảnh tư liệu chính thức.</li>
+    </ul></div>
+  </div>
+
+  <h3 class="sub">1.2 · Font chữ đề xuất (đã có sẵn trên Canva, hỗ trợ đủ dấu tiếng Việt)</h3>
+  <div class="fonts">
+    <div class="font-card"><div class="fc-head">FONT TIÊU ĐỀ</div><div class="fc-sample"><div style="font:900 30px Montserrat;color:#1B2A4A">HOÀNG VĂN THỤ</div><div style="font:800 17px Montserrat;color:#C8102E;margin-top:2px">Quang Vinh Bất Diệt 1909–1944</div></div><div class="fc-name"><b>Montserrat</b> (ExtraBold / Bold) — hiện đại, chắc, cân đối tốt với chữ in hoa có dấu.</div></div>
+    <div class="font-card"><div class="fc-head">FONT TRÍCH DẪN / THƠ</div><div class="fc-sample"><div style="font:italic 600 22px 'Playfair Display';color:#7A0C1E">"Nhắn bạn" —<br>vần thơ viết bằng gạch non</div></div><div class="fc-name"><b>Playfair Display</b> (Italic) — chỉ dùng cho trích thơ "Nhắn bạn" và câu quote duy nhất mỗi slide.</div></div>
+    <div class="font-card"><div class="fc-head">FONT THÂN BÀI</div><div class="fc-sample"><div style="font:500 15.5px 'Be Vietnam Pro';color:#232A33">Thợ cơ khí xưởng Nam Hưng, thợ in chữ ngược trên đá — nhà in Ngũ sắc thạch ấn, người làm báo.</div></div><div class="fc-name"><b>Be Vietnam Pro</b> (Regular/Medium) — thiết kế riêng cho tiếng Việt; nếu không thấy, dùng <b>Roboto</b> hoặc <b>Open Sans</b>.</div></div>
+  </div>
+  <div class="tbl-wrap" style="margin-top:14px"><table class="spec">
+    <tr><th>Thành phần</th><th>Font</th><th>Cỡ trên khung 1920×1080</th><th>Màu chữ</th></tr>
+    <tr><td class="k">Tiêu đề slide</td><td>Montserrat ExtraBold — IN HOA</td><td>40–44 pt</td><td>Trắng trên dải navy, hoặc đỏ #C8102E trên nền kem</td></tr>
+    <tr><td class="k">Năm / con số lớn</td><td>Montserrat ExtraBold</td><td>28–36 pt</td><td>Đỏ #C8102E · Vàng #F2B705 (nền tối)</td></tr>
+    <tr><td class="k">Trích thơ "Nhắn bạn"</td><td>Playfair Display Italic</td><td>24–28 pt</td><td>Nâu đậm #4A2E1C trên thẻ kem</td></tr>
+    <tr><td class="k">Nội dung gạch đầu dòng</td><td>Be Vietnam Pro Medium</td><td>17–19 pt</td><td>Navy #1B2A4A / trắng kem trên nền tối</td></tr>
+    <tr><td class="k">Chú thích ảnh tư liệu</td><td>Be Vietnam Pro Regular</td><td>12–13 pt</td><td>#6E6250, kèm nguồn ảnh</td></tr>
+  </table></div>
+
+  <h3 class="sub">1.3 · Khung Sơ đồ tư duy tổng thể — khổ A3 để in nộp</h3>
+  <p class="lead">Sơ đồ dưới đây dựng theo đúng tỉ lệ <b>A3 ngang (420 × 297 mm)</b>, đã ghi sẵn bảng màu ở chân trang. File chuẩn để in: <span class="chip">Mindmap_A3_Hoang_Van_Thu.svg</span> trong cùng thư mục — mở bằng trình duyệt → Ctrl+P → khổ A3, hướng ngang, lề <i>None/Default</i>, bật <i>Background graphics</i>.</p>
+  <div class="slide-scroll">
+    <div class="chrome"><span><span class="dot">★</span> MINDMAP A3 — 420 × 297 mm — IN MÀU</span><span>Mindmap_A3_Hoang_Van_Thu.svg</span></div>
+    <div style="background:#fff;padding:8px">
+
+<svg role="img" xmlns="http://www.w3.org/2000/svg" width="100%" style="display:block;height:auto" viewBox="0 0 1587 1123" font-family="Montserrat, 'Be Vietnam Pro', Arial, sans-serif">
+  <defs>
+    <style>
+      .hd{font-size:16px;font-weight:800;fill:#ffffff;letter-spacing:.5px}
+      .ln{font-size:13.5px;fill:#2a313b}
+      .num{font-size:13.5px;font-weight:800;fill:#7A0C1E}
+      .cap{font-size:13px;fill:#6b5a4a}
+    </style>
+  </defs>
+
+  <rect width="100%" style="display:block;height:auto" fill="#F7F2E7"/>
+  <rect x="14" y="14" width="1559" height="1095" fill="none" stroke="#8C5A3C" stroke-width="2.5"/>
+  <rect x="22" y="22" width="1543" height="1079" fill="none" stroke="#F2B705" stroke-width="1.2"/>
+
+  <text x="40" y="60" font-size="20" fill="#F2B705">★</text>
+  <text x="1530" y="60" font-size="20" fill="#F2B705">★</text>
+
+  <text x="793" y="62" text-anchor="middle" font-size="31" font-weight="800" fill="#7A0C1E">SƠ ĐỒ TƯ DUY TỔNG THỂ</text>
+  <text x="793" y="92" text-anchor="middle" font-size="16.5" font-weight="800" fill="#1B2A4A">ĐỒNG CHÍ HOÀNG VĂN THỤ (1909 – 1944) &amp; TRƯỜNG THPT HOÀNG VĂN THỤ – UÔNG BÍ, QUẢNG NINH</text>
+  <text x="793" y="118" text-anchor="middle" font-size="13" fill="#6b5a4a">Bài tập lớn Lịch sử • Hoạt động trải nghiệm — Khổ in A3 ngang (420 × 297 mm)</text>
+  <line x1="470" y1="132" x2="1117" y2="132" stroke="#C8102E" stroke-width="3"/>
+
+  <!-- ============ CONNECTORS ============ -->
+  <g fill="none" stroke-width="4">
+    <path d="M623 555 C520 555 505 245 390 245" stroke="#1B2A4A"/>
+    <path d="M623 575 C515 575 505 453 390 453" stroke="#8C5A3C"/>
+    <path d="M623 595 C515 595 505 661 390 661" stroke="#C8102E"/>
+    <path d="M963 545 C1075 545 1080 253 1197 253" stroke="#7A0C1E"/>
+    <path d="M963 575 C1080 575 1080 461 1197 461" stroke="#D99A00"/>
+    <path d="M963 605 C1080 605 1080 715 1197 715" stroke="#1B2A4A"/>
+    <path d="M793 635 L793 884" stroke="#C8102E"/>
+  </g>
+  <g>
+    <circle cx="623" cy="555" r="5" fill="#7A0C1E"/><circle cx="623" cy="575" r="5" fill="#7A0C1E"/>
+    <circle cx="623" cy="595" r="5" fill="#7A0C1E"/><circle cx="963" cy="545" r="5" fill="#7A0C1E"/>
+    <circle cx="963" cy="575" r="5" fill="#7A0C1E"/><circle cx="963" cy="605" r="5" fill="#7A0C1E"/>
+    <circle cx="793" cy="635" r="5" fill="#7A0C1E"/>
+    <circle cx="390" cy="245" r="6" fill="#1B2A4A"/><circle cx="390" cy="453" r="6" fill="#8C5A3C"/>
+    <circle cx="390" cy="661" r="6" fill="#C8102E"/><circle cx="1197" cy="253" r="6" fill="#7A0C1E"/>
+    <circle cx="1197" cy="461" r="6" fill="#D99A00"/><circle cx="1197" cy="715" r="6" fill="#1B2A4A"/>
+    <circle cx="793" cy="884" r="6" fill="#C8102E"/>
+  </g>
+
+  <!-- ============ CENTER NODE ============ -->
+  <rect x="623" y="515" width="340" height="120" rx="18" fill="#C8102E" stroke="#F2B705" stroke-width="4"/>
+  <text x="793" y="556" text-anchor="middle" font-size="19" font-weight="800" fill="#ffffff">ĐỒNG CHÍ</text>
+  <text x="793" y="588" text-anchor="middle" font-size="22" font-weight="800" fill="#FFE9A8">HOÀNG VĂN THỤ</text>
+  <text x="793" y="614" text-anchor="middle" font-size="14" font-weight="600" fill="#ffffff">1909 – 1944</text>
+
+  <!-- ============ B1: CON NGƯỜI (gốc Tây) ============ -->
+  <rect x="60" y="170" width="330" height="150" rx="14" fill="#FFFFFF" stroke="#1B2A4A" stroke-width="2"/>
+  <path d="M60 184 a14 14 0 0 1 14 -14 h302 a14 14 0 0 1 14 14 v20 h-330 z" fill="#1B2A4A"/>
+  <text x="225" y="193" text-anchor="middle" class="hd">TIẾT 1 • CON NGƯỜI</text>
+  <text x="78" y="228" class="ln">• Sinh 1909, người Tày (Lạng Sơn)</text>
+  <text x="78" y="252" class="ln">• Học chữ Hán và Quốc ngữ</text>
+  <text x="78" y="276" class="ln">• Chiến sĩ cách mạng chuyên nghiệp</text>
+  <text x="78" y="300" class="ln">• Hy sinh 24/5/1944, thọ 35 tuổi</text>
+
+  <!-- ============ B2: NGHỀ NGHIỆP ============ -->
+  <rect x="60" y="360" width="330" height="186" rx="14" fill="#FFFFFF" stroke="#8C5A3C" stroke-width="2"/>
+  <path d="M60 374 a14 14 0 0 1 14 -14 h302 a14 14 0 0 1 14 14 v20 h-330 z" fill="#8C5A3C"/>
+  <text x="225" y="383" text-anchor="middle" class="hd">NGHỀ NGHIỆP TRƯỚC CÁCH MẠNG</text>
+  <text x="78" y="418" class="ln">• Thợ cơ khí – xưởng Nam Hưng</text>
+  <text x="78" y="442" class="ln">• Thợ in chữ ngược trên đá</text>
+  <text x="78" y="466" class="ln">   (nhà in Ngũ sắc thạch ấn)</text>
+  <text x="78" y="490" class="ln">• Làm báo: Châu Giang, Tranh đấu,</text>
+  <text x="78" y="514" class="ln">   Lao động</text>
+
+  <!-- ============ B3: SỰ NGHIỆP ============ -->
+  <rect x="60" y="586" width="330" height="150" rx="14" fill="#FFFFFF" stroke="#C8102E" stroke-width="2"/>
+  <path d="M60 600 a14 14 0 0 1 14 -14 h302 a14 14 0 0 1 14 14 v20 h-330 z" fill="#C8102E"/>
+  <text x="225" y="609" text-anchor="middle" class="hd">SỰ NGHIỆP LÃNH ĐẠO</text>
+  <text x="78" y="644" class="ln">• 1939: Bí thư Xứ ủy Bắc Kỳ</text>
+  <text x="78" y="668" class="ln">• 1940–1941: Thường vụ Trung ương Đảng</text>
+  <text x="78" y="692" class="ln">• Phụ trách công tác Binh vận</text>
+  <text x="78" y="716" class="ln">• Xây dựng căn cứ địa cách mạng</text>
+
+  <!-- ============ B4: HIỆN VẬT & CÂU CHUYỆN ============ -->
+  <rect x="1197" y="160" width="330" height="186" rx="14" fill="#FFFFFF" stroke="#F2B705" stroke-width="3"/>
+  <path d="M1197 174 a14 14 0 0 1 14 -14 h302 a14 14 0 0 1 14 14 v20 h-330 z" fill="#7A0C1E"/>
+  <text x="1362" y="183" text-anchor="middle" class="hd">HIỆN VẬT &amp; CÂU CHUYỆN</text>
+  <text x="1215" y="218" class="ln">★ Xà lim số 1 – Nhà tù Hỏa Lò</text>
+  <text x="1215" y="242" class="ln">• Viết "Nhắn bạn" bằng gạch non</text>
+  <text x="1215" y="266" class="ln">• 25/8/1943: Bị thực dân Pháp bắt</text>
+  <text x="1215" y="290" class="ln">• 24/5/1944: Trước họng súng ở</text>
+  <text x="1215" y="314" class="ln">   Tương Mai – hiên ngang, từ chối bịt mắt</text>
+
+  <!-- ============ B5: 4 PHẨM CHẤT ============ -->
+  <rect x="1197" y="386" width="330" height="150" rx="14" fill="#FFFFFF" stroke="#D99A00" stroke-width="2"/>
+  <path d="M1197 400 a14 14 0 0 1 14 -14 h302 a14 14 0 0 1 14 14 v20 h-330 z" fill="#D99A00"/>
+  <text x="1362" y="409" text-anchor="middle" class="hd" fill="#1B2A4A">BỐN PHẨM CHẤT CỐT LÕI</text>
+  <text x="1215" y="444" class="ln"><tspan class="num">1.</tspan> Kiên trung, bất khuất</text>
+  <text x="1215" y="468" class="ln"><tspan class="num">2.</tspan> Tận tụy, trách nhiệm trọn đời</text>
+  <text x="1215" y="492" class="ln"><tspan class="num">3.</tspan> Tài năng tổ chức &amp; lãnh đạo sắc bén</text>
+  <text x="1215" y="516" class="ln"><tspan class="num">4.</tspan> Yêu nước &amp; niềm tin tất thắng</text>
+
+  <!-- ============ B6: LỊCH SỬ TRƯỜNG ============ -->
+  <rect x="1197" y="576" width="330" height="278" rx="14" fill="#FFFFFF" stroke="#1B2A4A" stroke-width="2"/>
+  <path d="M1197 590 a14 14 0 0 1 14 -14 h302 a14 14 0 0 1 14 14 v20 h-330 z" fill="#1B2A4A"/>
+  <text x="1362" y="599" text-anchor="middle" class="hd">TIẾT 2 • LỊCH SỬ NGÔI TRƯỜNG</text>
+  <text x="1215" y="634" class="ln">• 1979–1984: Phân hiệu Cấp 3 Uông Bí</text>
+  <text x="1215" y="658" class="ln">   (từ 3 lớp lên 6 lớp)</text>
+  <text x="1215" y="682" class="ln">• 17/11/1984: Thành lập Trường Trung</text>
+  <text x="1215" y="706" class="ln">   học kỹ thuật Hoàng Văn Thụ (QĐ 645)</text>
+  <text x="1215" y="730" class="ln">• 1989–2007: THPT Hoàng Văn Thụ; sáp</text>
+  <text x="1215" y="754" class="ln">   nhập THCS Nguyễn Văn Cừ – liên cấp</text>
+  <text x="1215" y="778" class="ln">   lớn nhất tỉnh (40 lớp, &gt;1.800 HS)</text>
+  <text x="1215" y="802" class="ln">• 4/2012: Đạt chuẩn Quốc gia</text>
+  <text x="1215" y="826" class="ln">• 2014: Bằng khen của Thủ tướng CP</text>
+
+  <!-- ============ B7: BÀI HỌC ============ -->
+  <rect x="513" y="884" width="560" height="140" rx="14" fill="#FFFFFF" stroke="#C8102E" stroke-width="2"/>
+  <path d="M513 898 a14 14 0 0 1 14 -14 h532 a14 14 0 0 1 14 14 v20 h-560 z" fill="#7A0C1E"/>
+  <text x="793" y="907" text-anchor="middle" class="hd">BÀI HỌC CHO THẾ HỆ HỌC SINH HÔM NAY</text>
+  <text x="793" y="942" text-anchor="middle" class="ln">• Sống có lý tưởng, kiên định và trách nhiệm như Người</text>
+  <text x="793" y="966" text-anchor="middle" class="ln">• Tự hào truyền thống ngôi trường mang tên Hoàng Văn Thụ</text>
+  <text x="793" y="990" text-anchor="middle" class="ln">• Biến lòng yêu nước thành hành động học tập hôm nay</text>
+
+  <!-- ============ FOOTER ============ -->
+  <text x="793" y="1064" text-anchor="middle" font-size="13" font-weight="600" fill="#1B2A4A">Bảng màu: Đỏ cờ #C8102E • Đỏ trầm #7A0C1E • Vàng đồng #F2B705 • Nâu gạch #8C5A3C • Navy #1B2A4A • Kem giấy #F7F2E7</text>
+  <text x="793" y="1088" text-anchor="middle" font-size="12" fill="#8C5A3C">Khổ A3 ngang 420 × 297 mm — in màu, viền lề 1 cm • Nhóm: …………  Lớp: …………  •  Năm học 2026 – 2027</text>
+</svg>
+
+    </div>
+  </div>
+  <div class="filecard"><div class="fi">🗺️</div><div><b>Cấu trúc sơ đồ tư duy (7 nhánh)</b><br><span style="font-size:14px;color:#4C4436">Trung tâm: <b>Đồng chí Hoàng Văn Thụ 1909–1944</b> → 3 nhánh Tiết 1 (bên trái): <b>Con người · Nghề nghiệp · Sự nghiệp lãnh đạo</b> → 3 nhánh bên phải: <b>Hiện vật &amp; câu chuyện điểm nhấn · 4 phẩm chất cốt lõi · Lịch sử ngôi trường (Tiết 2)</b> → 1 nhánh chân sơ đồ: <b>Bài học cho thế hệ học sinh hôm nay</b>. Màu từng nhánh trùng khớp bảng màu 1.1.</span></div></div>
+
+  <h4 class="mini">Từ khóa tìm element trên Canva (tiếng Anh cho nhiều kết quả nhất)</h4>
+  <div class="tbl-wrap"><table class="spec">
+    <tr><th>Cần gì</th><th>Từ khóa tìm kiếm</th><th>Ghi chú</th></tr>
+    <tr><td class="k">Nền giấy cũ</td><td><i>old paper texture, parchment background</i></td><td>Chỉnh trong suốt 70–80% đặt dưới nền kem</td></tr>
+    <tr><td class="k">Ngôi sao vàng</td><td><i>gold star, star icon</i></td><td>Dùng đúng 1 ngôi sao lớn mỗi slide</td></tr>
+    <tr><td class="k">Timeline</td><td><i>timeline infographic, history timeline</i></td><td>Slide 2 (dọc) và slide 4 (ngang)</td></tr>
+    <tr><td class="k">Khung ảnh tư liệu</td><td><i>vintage photo frame, museum frame</i></td><td>Viền vàng đồng như ảnh bảo tàng</td></tr>
+    <tr><td class="k">Lát cắt / dải lụa đỏ</td><td><i>red ribbon banner</i></td><td>Trang trí tiêu đề slide 1</td></tr>
+    <tr><td class="k">Icon nghề nghiệp</td><td><i>mechanic gear, printing press, newspaper, microphone</i></td><td>Đồng bộ một bộ icon扁平 một kiểu</td></tr>
+  </table></div>
+</section>
+</section>
+<!-- ================= PHẦN 2 ================= -->
+<section id="phan2">
+  <div class="sec-head"><div class="sec-num">2</div><div><h2>PHẦN 2 — BLUEPRINT CHI TIẾT 5 SLIDE</h2><div class="sec-sub">Mỗi slide gồm: ① Tiêu đề · ② Bố cục visual · ③ Văn bản chính xác · ④ Ảnh bạn sẽ gửi — kèm mockup dựng sẵn</div></div></div>
+  <p class="lead">Tổng mạch trình: <b>Slide 1 mở đầu → Slide 2 chân dung (Tiết 1) → Slide 3 điểm nhấn cảm xúc (xà lim số 1 &amp; "Nhắn bạn") → Slide 4 lịch sử trường (Tiết 2) → Slide 5 tổng kết – thông điệp.</b> Nhịp cảm xúc đi lên: tự hào → ngưỡng mộ → lặng đi → tự hào → thức tỉnh. Mockup dưới đây dựng đúng tỉ lệ 16:9; khi làm Canva, đặt khung thiết kế <b>1920 × 1080 px</b>.</p>
+
+  <!-- ============ SLIDE 1 ============ -->
+  <h3 class="sub">SLIDE 1 · Bìa mở đầu — "Một cái tên, một mái trường"</h3>
+  <div class="tbl-wrap"><table class="spec">
+    <tr><th style="width:190px">Hạng mục</th><th>Nội dung</th></tr>
+    <tr><td class="k">① Tiêu đề slide</td><td><b>HOÀNG VĂN THỤ (1909 – 1944)</b> — phụ đề: <i>"Ngọn đuốc bất diệt &amp; mái trường mang tên Người"</i></td></tr>
+    <tr><td class="k">② Bố cục Visual</td><td>• Nền: gradient navy → đỏ trầm (135°), 1 ngôi sao vàng lớn mờ 10% góc phải trên, dải đỏ cờ 12px chạy dọc mép trái.<br>• <b>Trái 55%</b> (cách mép 6%): dòng kicker vàng (letter-spacing 4px) → tiêu đề Montserrat 900 cỡ ~110px, in hoa → số năm vàng → phụ đề Playfair nghiêng màu kem.<br>• <b>Phải 35%</b>: khung ảnh chân dung (700 × 780 px) viền vàng đồng 4px bo góc 16px, có dải chú thích "1939 — Bí thư Xứ ủy Bắc Kỳ" dưới chân khung.<br>• Góc dưới trái: dòng thông tin nhóm; góc dưới phải: badge "Thời lượng 8 phút".</td></tr>
+    <tr><td class="k">③ Văn bản chính xác</td><td>• Dòng nhỏ trên: <b>BÀI TẬP LỚN • LỊCH SỬ &amp; HOẠT ĐỘNG TRẢI NGHIỆM</b><br>• <b>HOÀNG VĂN THỤ</b><br>• <b>1909 – 1944</b><br>• <i>Ngọn đuốc bất diệt &amp; mái trường mang tên Người</i><br>• Trường THPT Hoàng Văn Thụ — Uông Bí, Quảng Ninh<br>• Nhóm: ……… · Lớp: ……… · Tháng 9/2026<br>• Khung ảnh: <b>[ẢNH 1 — Chân dung Đồng chí Hoàng Văn Thụ]</b></td></tr>
+    <tr><td class="k">④ Hình ảnh bạn sẽ gửi</td><td><b>Ảnh 1:</b> Chân dung chính thức của đồng chí Hoàng Văn Thụ (ảnh tư liệu nhà trường/phòng truyền thống cung cấp) — JPG/PNG, cạnh ngắn ≥ 1200 px, nền càng sạch càng tốt.</td></tr>
+  </table></div>
+  <div class="slide-scroll" style="margin-top:14px">
+    <div class="chrome"><span><span class="dot">★</span> SLIDE 1 / 5 — BÌA MỞ ĐẦU</span><span>1920 × 1080 · nền tối</span></div>
+    <div class="slide" style="background:linear-gradient(135deg,#141F38 0%,#1B2A4A 52%,#3A0D18 100%)">
+      <div style="position:absolute;right:-70px;top:-120px;font:900 430px Montserrat;color:rgba(242,183,5,.10);line-height:1">★</div>
+      <div style="position:absolute;left:0;top:0;width:12px;height:100%;background:linear-gradient(180deg,#C8102E,#7A0C1E)"></div>
+      <div style="position:absolute;left:66px;top:66px;color:#F2B705;font:800 15px Montserrat;letter-spacing:4px">BÀI TẬP LỚN • LỊCH SỬ &amp; HOẠT ĐỘNG TRẢI NGHIỆM</div>
+      <div style="position:absolute;left:66px;top:118px;color:#fff;font:900 86px/1.05 Montserrat">HOÀNG VĂN THỤ</div>
+      <div style="position:absolute;left:66px;top:236px;color:#F2B705;font:800 34px Montserrat">1909 – 1944</div>
+      <div style="position:absolute;left:66px;top:298px;color:#F7F2E7;font:italic 600 24px 'Playfair Display'">"Ngọn đuốc bất diệt &amp; mái trường mang tên Người"</div>
+      <div style="position:absolute;left:66px;top:352px;width:74px;height:5px;background:#C8102E"></div>
+      <div style="position:absolute;left:66px;bottom:104px;color:#E9E1CE;font-size:16px;line-height:1.75">
+        Trường THPT Hoàng Văn Thụ — Uông Bí, Quảng Ninh<br>Nhóm: …………… · Lớp: …………… · Tháng 9/2026
+      </div>
+      <div style="position:absolute;left:66px;bottom:52px;border:2px solid rgba(242,183,5,.7);border-radius:999px;padding:6px 18px;color:#F2B705;font:700 13.5px Montserrat;letter-spacing:1px">TIẾT 1 + TIẾT 2 • THỜI LƯỢNG 8 PHÚT</div>
+      <div class="ph" style="right:62px;top:112px;width:400px;height:470px">
+        <div class="ic">🖼️</div><div class="t1">[ẢNH 1] CHÂN DUNG ĐỒNG CHÍ</div>
+        <div class="t2">Ảnh tư liệu chính thức — <b>bạn sẽ gửi</b> · viền vàng đồng 4px · dải chú thích dưới chân khung</div>
+      </div>
+      <div style="position:absolute;right:62px;top:596px;width:400px;text-align:center;color:#F2B705;font:700 15px Montserrat;letter-spacing:1px;background:rgba(122,12,30,.55);border-radius:10px;padding:8px 0">1939 — BÍ THƯ XỨ ỦY BẮC KỲ</div>
+    </div>
+  </div>
+  <p class="capnote">💡 Mẹo Canva: tìm element <i>"gold star"</i> đặt góc phải trên, giảm trong suốt còn 10%; khung ảnh dùng thanh <b>Border</b> màu #F2B705, dày 4.</p>
+
+  <!-- ============ SLIDE 2 ============ -->
+  <h3 class="sub">SLIDE 2 · Tiết 1 — Chân dung người chiến sĩ (tiểu sử – nghề nghiệp – chức trách)</h3>
+  <div class="tbl-wrap"><table class="spec">
+    <tr><th style="width:190px">Hạng mục</th><th>Nội dung</th></tr>
+    <tr><td class="k">① Tiêu đề slide</td><td><b>TIẾT 1 · ĐỒNG CHÍ HOÀNG VĂN THỤ (1909 – 1944)</b> — chip phải: "NGƯỜI THỢ – NGƯỜI IN – NGƯỜI LÀM BÁO"</td></tr>
+    <tr><td class="k">② Bố cục Visual</td><td>• Nền kem giấy; dải tiêu đề navy cao 150px, gạch chân đỏ 6px.<br>• <b>Trái 45%:</b> timeline DỌC 5 mốc — chấm tròn vàng viền đỏ nối bằng đường đỏ; năm màu đỏ trầm đậm.<br>• <b>Phải 45%:</b> 2 thẻ chồng nhau — thẻ trắng viền trái nâu gạch (3 nghề tay) + thẻ navy (vũ khí của Người).<br>• Mỗi nghề 1 icon đồng bộ: ⚙️ cơ khí · 🖨️ in ấn · 📰 báo chí.</td></tr>
+    <tr><td class="k">③ Văn bản chính xác</td><td><b>Timeline:</b> 1909 — Sinh ra tại Lạng Sơn, người dân tộc Tày; học chữ Hán &amp; Quốc ngữ → Trước 1939 — Thợ cơ khí xưởng Nam Hưng; thợ in chữ ngược trên đá (Ngũ sắc thạch ấn); làm báo Châu Giang, Tranh đấu, Lao động → <b>1939 — Bí thư Xứ ủy Bắc Kỳ</b> → <b>1940–1941 — Thường vụ Trung ương Đảng</b>; phụ trách Binh vận &amp; căn cứ địa → <b>1943–1944 — Bị bắt 25/8/1943; hy sinh 24/5/1944</b>.<br><b>Thẻ phải 1:</b> "BA NGHỀ TAY TRƯỚC CÁCH MẠNG" + 3 dòng icon.<br><b>Thẻ phải 2:</b> "Đôi tay thợ, máy in và ngòi bút trở thành vũ khí cách mạng" + chip "Cơ sở Long Châu · Mạng lưới bí mật".</td></tr>
+    <tr><td class="k">④ Hình ảnh bạn sẽ gửi</td><td><b>Tùy chọn Ảnh 2:</b> ảnh tư liệu xưởng Nam Hưng / nhà in Ngũ sắc thạch ấn / một trang báo thời kỳ đó (nếu phòng truyền thống có) — đặt nhỏ 260 × 180 px cạnh thẻ phải. Không bắt buộc.</td></tr>
+  </table></div>
+  <div class="slide-scroll" style="margin-top:14px">
+    <div class="chrome"><span><span class="dot">★</span> SLIDE 2 / 5 — TIẾT 1 · CHÂN DUNG NGƯỜI CHIẾN SĨ</span><span>1920 × 1080 · nền kem</span></div>
+    <div class="slide" style="background:#F7F2E7">
+      <div style="position:absolute;left:0;top:0;width:100%;height:96px;background:#1B2A4A"></div>
+      <div style="position:absolute;left:56px;top:24px;color:#fff;font:800 30px Montserrat">TIẾT 1 · ĐỒNG CHÍ HOÀNG VĂN THỤ <span style="color:#F2B705">(1909 – 1944)</span></div>
+      <div style="position:absolute;right:56px;top:26px;background:#C8102E;color:#fff;border-radius:999px;padding:7px 18px;font:700 13.5px Montserrat;letter-spacing:1px">NGƯỜI THỢ – NGƯỜI IN – NGƯỜI LÀM BÁO</div>
+      <div class="tl">
+        <div class="line"></div>
+        <div class="it"><div class="dot"></div><div class="yr">1909</div><div class="ds">Sinh ra tại Lạng Sơn · người dân tộc Tày · học chữ Hán &amp; Quốc ngữ</div></div>
+        <div class="it"><div class="dot"></div><div class="yr">TRƯỚC 1939</div><div class="ds">Thợ cơ khí xưởng <b>Nam Hưng</b> · thợ in chữ ngược trên đá (<b>Ngũ sắc thạch ấn</b>) · làm báo <b>Châu Giang, Tranh đấu, Lao động</b></div></div>
+        <div class="it"><div class="dot"></div><div class="yr">1939</div><div class="ds"><b>Bí thư Xứ ủy Bắc Kỳ</b></div></div>
+        <div class="it"><div class="dot"></div><div class="yr">1940 – 1941</div><div class="ds"><b>Thường vụ Trung ương Đảng</b> · phụ trách công tác Binh vận &amp; xây dựng căn cứ địa cách mạng</div></div>
+        <div class="it" style="margin-bottom:0"><div class="dot"></div><div class="yr">1943 – 1944</div><div class="ds">Bị bắt <b>25/8/1943</b> → hy sinh <b>24/5/1944</b> tại Tương Mai</div></div>
+      </div>
+      <div style="position:absolute;right:56px;top:138px;width:520px;background:#fff;border-left:8px solid #8C5A3C;border-radius:14px;padding:16px 20px;box-shadow:0 8px 20px rgba(60,45,20,.10)">
+        <div style="font:800 16px Montserrat;color:#8C5A3C;letter-spacing:1px;margin-bottom:10px">BA NGHỀ TAY TRƯỚC CÁCH MẠNG</div>
+        <div style="font-size:15px;color:#232A33;line-height:2">
+          ⚙️ <b>Thợ cơ khí</b> — xưởng Nam Hưng<br>
+          🖨️ <b>Thợ in chữ ngược trên đá</b> — nhà in Ngũ sắc thạch ấn<br>
+          📰 <b>Người làm báo</b> — Châu Giang · Tranh đấu · Lao động
+        </div>
+      </div>
+      <div style="position:absolute;right:56px;top:352px;width:520px;background:#1B2A4A;border-radius:14px;padding:18px 20px;box-shadow:0 8px 20px rgba(60,45,20,.14)">
+        <div style="font:800 14px Montserrat;color:#F2B705;letter-spacing:2px;margin-bottom:8px">VŨ KHÍ CỦA NGƯỜI</div>
+        <div style="font:italic 600 19px 'Playfair Display';color:#F7F2E7">"Đôi tay thợ, máy in và ngòi bút trở thành vũ khí cách mạng."</div>
+        <div style="margin-top:12px"><span style="display:inline-block;background:rgba(242,183,5,.16);border:1px solid #F2B705;color:#F2B705;border-radius:999px;padding:4px 14px;font:700 12.5px Montserrat">CƠ SỞ LONG CHÂU</span> <span style="display:inline-block;background:rgba(242,183,5,.16);border:1px solid #F2B705;color:#F2B705;border-radius:999px;padding:4px 14px;font:700 12.5px Montserrat">MẠNG LƯỚI BÍ MẬT</span></div>
+      </div>
+      <div class="ph ph-light" style="right:56px;top:528px;width:520px;height:118px;flex-direction:row;gap:14px">
+        <div class="ic" style="font-size:30px">🖼️</div>
+        <div style="text-align:left"><div class="t1" style="font-size:13px">[ẢNH 2 — TÙY CHỌN]</div><div class="t2" style="font-size:12.5px;max-width:360px">Ảnh tư liệu xưởng Nam Hưng / nhà in Ngũ sắc thạch ấn / trang báo cũ — bạn sẽ gửi (nếu có)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SLIDE 3 ============ -->
+  <h3 class="sub">SLIDE 3 · Điểm nhấn — Xà lim số 1 &amp; bài thơ "Nhắn bạn" (1 hiện vật + 1 câu chuyện)</h3>
+  <div class="tbl-wrap"><table class="spec">
+    <tr><th style="width:190px">Hạng mục</th><th>Nội dung</th></tr>
+    <tr><td class="k">① Tiêu đề slide</td><td><b>XÀ LIM SỐ 1 — NƠI Ý CHÍ KHÔNG THỂ BIẾN MẤT</b> — kicker trên: "ĐIỂM NHẤN · MỘT HIỆN VẬT — MỘT CÂU CHUYỆN"</td></tr>
+    <tr><td class="k">② Bố cục Visual</td><td>• Nền tối nhất bộ slide: radial đỏ đen (#4D0F1A → #12070B) — giảm ánh sáng để cả lớp tập trung.<br>• <b>Trái 36%:</b> khung ảnh hiện vật (660 × 560 px) viền vàng đồng, chú thích bảo tàng bên dưới như bảng tên hiện vật.<br>• <b>Phải 50%:</b> thẻ "giấy dó" nền kem bo 18px — dấu ngoặc kép vàng khổng lồ, trích thơ Playfair nghiêng, dòng ký tên.<br>• <b>Dưới cùng:</b> dải 4 bước mũi tên (bị bắt → xà lim → gạch non "Nhắn bạn" → Tương Mai).</td></tr>
+    <tr><td class="k">③ Văn bản chính xác</td><td>• Kicker: <b>ĐIỂM NHẤN · MỘT HIỆN VẬT — MỘT CÂU CHUYỆN</b><br>• Khung ảnh: <b>[ẢNH 3 — Xà lim số 1 (Cellule 1), Nhà tù Hỏa Lò]</b> + chú thích "Hiện vật: Xà lim số 1 — nơi giam đồng chí sau 25/8/1943".<br>• Thẻ thơ: <b>[Trích 2–4 câu bài thơ "Nhắn bạn" — chỉ dùng trích đoạn đã được xác thực trong tư liệu của trường]</b> — ký tên: <b>— Đồng chí Hoàng Văn Thụ, viết bằng gạch non tại xà lim số 1 (1943–1944)</b>.<br>• Dải 4 bước: <b>25/8/1943 · BỊ BẮT</b> → <b>XÀ LIM SỐ 1 · HỎA LÒ</b> → <b>GẠCH NON · "NHẮN BẠN"</b> → <b>24/5/1944 · TƯƠNG MAI — TỪ CHỐI BỊT MẮT</b>.</td></tr>
+    <tr><td class="k">④ Hình ảnh bạn sẽ gửi</td><td><b>Ảnh 3 (bắt buộc):</b> ảnh không gian/hiện vật Xà lim số 1 — Cellule 1, Nhà tù Hỏa Lò (chụp khi tham quan hoặc ảnh tư liệu bảo tàng) — ≥ 1500 px, ngang.<br><b>Tùy chọn Ảnh 4:</b> ảnh di liệu/bia Tương Mai (nếu có).</td></tr>
+  </table></div>
+  <div class="mark" style="margin-top:12px">⚠️ <b>Quy tắc xác thực:</b> nhóm KHÔNG tự trích bài thơ từ mạng xã hội. Chỉ dùng trích đoạn do giáo viên/tư liệu phòng truyền thống cung cấp; nếu chưa có, để nguyên placeholder và đọc lời dẫn.</div>
+  <div class="slide-scroll" style="margin-top:12px">
+    <div class="chrome"><span><span class="dot">★</span> SLIDE 3 / 5 — ĐIỂM NHẤN: XÀ LIM SỐ 1 &amp; "NHẮN BẠN"</span><span>1920 × 1080 · nền tối — slide cảm xúc</span></div>
+    <div class="slide" style="background:radial-gradient(1100px 640px at 68% 18%, #4D0F1A 0%, #240A10 55%, #12070B 100%)">
+      <div style="position:absolute;left:0;right:0;top:34px;text-align:center;color:#F2B705;font:800 15px Montserrat;letter-spacing:4px">ĐIỂM NHẤN · MỘT HIỆN VẬT — MỘT CÂU CHUYỆN</div>
+      <div style="position:absolute;left:0;right:0;top:64px;text-align:center;color:#fff;font:800 34px Montserrat">XÀ LIM SỐ 1 — NƠI Ý CHÍ KHÔNG THỂ BIẾN MẤT</div>
+      <div class="ph" style="left:56px;top:118px;width:430px;height:330px">
+        <div class="ic">🏛️</div><div class="t1">[ẢNH 3] XÀ LIM SỐ 1 (CELLULE 1)</div>
+        <div class="t2">Nhà tù Hỏa Lò — ảnh bạn sẽ gửi · viền vàng đồng · tối ảnh 30% để khung hòa vào nền</div>
+      </div>
+      <div style="position:absolute;left:56px;top:462px;width:430px;text-align:center;color:#D9CFBB;font-size:12.5px;font-style:italic">Hiện vật: Xà lim số 1 — nơi giam đồng chí Hoàng Văn Thụ sau ngày 25/8/1943</div>
+      <div style="position:absolute;right:56px;top:118px;width:620px;height:344px;background:#F7F2E7;border-radius:18px;padding:26px 30px;box-shadow:0 16px 40px rgba(0,0,0,.45)">
+        <div style="font:900 64px Montserrat;color:#F2B705;line-height:.6;margin-bottom:6px">“</div>
+        <div style="font:italic 600 22.5px/1.55 'Playfair Display';color:#4A2E1C;min-height:150px">[Trích 2–4 câu bài thơ <b>"Nhắn bạn"</b> — chỉ dùng trích đoạn đã được xác thực trong tư liệu của trường — bạn sẽ gửi/nhận từ thầy cô]</div>
+        <div style="border-top:2px solid #E0D5BE;margin-top:14px;padding-top:10px;color:#8C5A3C;font:700 14.5px Montserrat">— ĐỒNG CHÍ HOÀNG VĂN THỤ · VIẾT BẰNG GẠCH NON TẠI XÀ LIM SỐ 1 (1943 – 1944)</div>
+      </div>
+      <div class="steps">
+        <div class="st"><b>25/8/1943</b><span>BỊ THỰC DÂN PHÁP BẮT</span></div><div class="arr">➜</div>
+        <div class="st"><b>XÀ LIM SỐ 1</b><span>NHÀ TÙ HỎA LÒ</span></div><div class="arr">➜</div>
+        <div class="st"><b>GẠCH NON</b><span>VIẾT "NHẮN BẠN" LÊN VÁCH TÙ</span></div><div class="arr">➜</div>
+        <div class="st"><b>24/5/1944 · TƯƠNG MAI</b><span>HIÊN NGANG — TỪ CHỐI BỊT MẮT TRƯỚC HỌNG SÚNG</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SLIDE 4 ============ -->
+  <h3 class="sub">SLIDE 4 · Tiết 2 — Lịch sử ngôi trường mang tên Người (1979 → nay)</h3>
+  <div class="tbl-wrap"><table class="spec">
+    <tr><th style="width:190px">Hạng mục</th><th>Nội dung</th></tr>
+    <tr><td class="k">① Tiêu đề slide</td><td><b>TIẾT 2 · LỊCH SỬ NGÔI TRƯỜNG MANG TÊN NGƯỜI</b> — chip phải: "1979 → NAY"</td></tr>
+    <tr><td class="k">② Bố cục Visual</td><td>• Nền kem; dải tiêu đề navy.<br>• <b>Timeline NGANG</b> giữa slide: đường đỏ chạy ngang, 4 thẻ trắng cột màu xen kẽ (đỏ – nâu gạch – navy – vàng đồng), mỗi thẻ có năm cỡ lớn đỏ trầm + 2–3 gạch đầu dòng.<br>• <b>Chân slide:</b> 3 huy hiệu (pill) viền vàng đồng nêu thành tựu — tạo "vòng kết" tự hào.<br>• Mũi tên nhỏ gắn giữa các thẻ để mắt đọc theo trật tự trái → phải.</td></tr>
+    <tr><td class="k">③ Văn bản chính xác</td><td><b>Thẻ 1 · 1979 – 1984 · PHÂN HIỆU CẤP 3 UÔNG BÍ:</b> — Bắt đầu với 3 lớp · Phát triển lên 6 lớp.<br><b>Thẻ 2 · 17/11/1984 · THÀNH LẬP TRƯỜNG:</b> — Quyết định số 645/QĐ-UBND · Tên đầu tiên: Trường Trung học kỹ thuật Hoàng Văn Thụ.<br><b>Thẻ 3 · 1989 – 2007 · THPT HOÀNG VĂN THỤ:</b> — Sáp nhập THCS Nguyễn Văn Cừ · Trường liên cấp lớn nhất tỉnh: 40 lớp, hơn 1.800 HS.<br><b>Thẻ 4 · 2007 – NAY · PHÁT TRIỂN BỀN VỮNG:</b> — Tách riêng cấp 3 · Chuẩn Quốc gia (4/2012) · Bằng khen Thủ tướng CP (2014).</td></tr>
+    <tr><td class="k">④ Hình ảnh bạn sẽ gửi</td><td><b>Ảnh 5:</b> ảnh trường xưa nhất có (khăn quàng, cổng trường cũ) — ô 440 × 260 px góc dưới trái.<br><b>Ảnh 6:</b> ảnh trường hiện nay / cổng trường — ô đối diện góc dưới phải.<br><b>Tùy chọn:</b> ảnh Bằng khen / Cờ Chuẩn Quốc gia (nếu phòng truyền thống cho mượn ảnh).</td></tr>
+  </table></div>
+  <div class="slide-scroll" style="margin-top:14px">
+    <div class="chrome"><span><span class="dot">★</span> SLIDE 4 / 5 — TIẾT 2 · LỊCH SỬ NGÔI TRƯỜNG</span><span>1920 × 1080 · nền kem</span></div>
+    <div class="slide" style="background:#F7F2E7">
+      <div style="position:absolute;left:0;top:0;width:100%;height:96px;background:#1B2A4A"></div>
+      <div style="position:absolute;left:56px;top:24px;color:#fff;font:800 30px Montserrat">TIẾT 2 · LỊCH SỬ NGÔI TRƯỜNG MANG TÊN NGƯỜI</div>
+      <div style="position:absolute;right:56px;top:26px;background:#C8102E;color:#fff;border-radius:999px;padding:7px 18px;font:700 13.5px Montserrat;letter-spacing:1px">1979 → NAY</div>
+      <div style="position:absolute;left:56px;right:56px;top:262px;height:5px;background:linear-gradient(90deg,#C8102E,#8C5A3C,#1B2A4A,#D99A00);border-radius:3px"></div>
+      <div class="hcards" style="top:150px">
+        <div class="hc"><div class="yr">1979 – 1984</div><div class="ti">PHÂN HIỆU CẤP 3 UÔNG BÍ</div><ul><li>Bắt đầu với 3 lớp</li><li>Phát triển lên 6 lớp</li></ul></div>
+        <div class="hc alt"><div class="yr">17/11/1984</div><div class="ti">THÀNH LẬP TRƯỜNG</div><ul><li>Quyết định số 645/QĐ-UBND</li><li>Tên đầu: Trường Trung học kỹ thuật Hoàng Văn Thụ</li></ul></div>
+        <div class="hc nv"><div class="yr">1989 – 2007</div><div class="ti">THPT HOÀNG VĂN THỤ</div><ul><li>Sáp nhập THCS Nguyễn Văn Cừ</li><li>Liên cấp lớn nhất tỉnh: 40 lớp, hơn 1.800 HS</li></ul></div>
+        <div class="hc gd"><div class="yr">2007 – NAY</div><div class="ti">PHÁT TRIỂN BỀN VỮNG</div><ul><li>Tách riêng cấp 3</li><li>Chuẩn Quốc gia (4/2012)</li><li>Bằng khen Thủ tướng CP (2014)</li></ul></div>
+      </div>
+      <div class="ph ph-light" style="left:56px;bottom:78px;width:440px;height:150px;flex-direction:row;gap:14px">
+        <div class="ic" style="font-size:30px">📷</div><div style="text-align:left"><div class="t1" style="font-size:13px">[ẢNH 5] TRƯỜNG XƯA</div><div class="t2" style="font-size:12.5px;max-width:300px">Ảnh tư liệu năm đầu thành lập — bạn sẽ gửi</div></div>
+      </div>
+      <div class="ph ph-light" style="right:56px;bottom:78px;width:440px;height:150px;flex-direction:row;gap:14px">
+        <div class="ic" style="font-size:30px">🏫</div><div style="text-align:left"><div class="t1" style="font-size:13px">[ẢNH 6] TRƯỜNG HÔM NAY</div><div class="t2" style="font-size:12.5px;max-width:300px">Ảnh cổng trường / sân trường hiện tại — bạn sẽ gửi</div></div>
+      </div>
+      <div class="pills"><span>★ Chuẩn Quốc gia — 4/2012</span><span>★ Bằng khen Thủ tướng Chính phủ — 2014</span><span>★ 40 lớp · hơn 1.800 HS (thời kỳ liên cấp)</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SLIDE 5 ============ -->
+  <h3 class="sub">SLIDE 5 · Tổng kết — Bốn phẩm chất, một ngọn lửa</h3>
+  <div class="tbl-wrap"><table class="spec">
+    <tr><th style="width:190px">Hạng mục</th><th>Nội dung</th></tr>
+    <tr><td class="k">① Tiêu đề slide</td><td><b>TỔNG KẾT · BỐN PHẨM CHẤT — MỘT NGỌN LỬA</b></td></tr>
+    <tr><td class="k">② Bố cục Visual</td><td>• Nền kem; dải tiêu đề navy.<br>• <b>Trái 55%:</b> lưới 2×2 thẻ trắng viền trái vàng đồng, mỗi thẻ 1 huy hiệu số tròn đỏ + tên phẩm chất + 1 dòng gợi nhắc sự kiện.<br>• <b>Phải 35%:</b> panel navy bo 20px phủ gần hết chiều cao — kicker vàng "THÔNG ĐIỆP", câu quote Playfair trắng kem, nút vàng "XIN CẢM ƠN" ở đáy panel.<br>• Ngôi sao vàng nhỏ 6% treo góc phải trên panel.</td></tr>
+    <tr><td class="k">③ Văn bản chính xác</td><td>• <b>01 — KIÊN TRUNG, BẤT KHUẤT:</b> Không gục ngã trước họng súng Tương Mai.<br>• <b>02 — TẬN TỤY, TRÁCH NHIỆM:</b> Trọn đời vì sự nghiệp cách mạng.<br>• <b>03 — TÀI NĂNG TỔ CHỨC &amp; LÃNH ĐẠO:</b> Cơ sở Long Châu, mạng lưới bí mật.<br>• <b>04 — YÊU NƯỚC &amp; TIN TẤT THẮNG:</b> "Nhắn bạn" viết từ xà lim số 1.<br>• Panel: <i>"Từ xà lim số 1 đến phòng học đầy nắng — ngọn lửa năm 1944 vẫn cháy trong mái trường mang tên Người."</i> + <b>XIN CẢM ƠN THẦY CÔ &amp; CÁC BẠN! 🌻</b></td></tr>
+    <tr><td class="k">④ Hình ảnh bạn sẽ gửi</td><td><b>Ảnh 7 (tùy chọn):</b> ảnh tập thể lớp/nhóm trong trang phục đồng phục — đặt nhỏ dưới panel để chốt cảm xúc "thế hệ hôm nay". Không bắt buộc.</td></tr>
+  </table></div>
+  <div class="slide-scroll" style="margin-top:14px">
+    <div class="chrome"><span><span class="dot">★</span> SLIDE 5 / 5 — TỔNG KẾT &amp; THÔNG ĐIỆP</span><span>1920 × 1080 · nền kem</span></div>
+    <div class="slide" style="background:#F7F2E7">
+      <div style="position:absolute;left:0;top:0;width:100%;height:96px;background:#1B2A4A"></div>
+      <div style="position:absolute;left:56px;top:24px;color:#fff;font:800 30px Montserrat">TỔNG KẾT · <span style="color:#F2B705">BỐN PHẨM CHẤT — MỘT NGỌN LỬA</span></div>
+      <div class="qgrid" style="top:130px">
+        <div class="qc"><span class="qn">01</span><div class="qt">KIÊN TRUNG, BẤT KHUẤT</div><div class="qs">Không gục ngã trước họng súng Tương Mai</div></div>
+        <div class="qc"><span class="qn">02</span><div class="qt">TẬN TỤY, TRÁCH NHIỆM</div><div class="qs">Trọn đời vì sự nghiệp cách mạng</div></div>
+        <div class="qc"><span class="qn">03</span><div class="qt">TÀI NĂNG TỔ CHỨC &amp; LÃNH ĐẠO</div><div class="qs">Cơ sở Long Châu, mạng lưới bí mật</div></div>
+        <div class="qc"><span class="qn">04</span><div class="qt">YÊU NƯỚC &amp; TIN TẤT THẮNG</div><div class="qs">"Nhắn bạn" viết từ xà lim số 1</div></div>
+      </div>
+      <div style="position:absolute;right:56px;top:130px;width:430px;height:505px;background:#1B2A4A;border-radius:20px;padding:26px 28px;box-shadow:0 14px 34px rgba(20,25,40,.28)">
+        <div style="position:absolute;right:18px;top:14px;font:900 46px Montserrat;color:rgba(242,183,5,.28)">★</div>
+        <div style="font:800 14px Montserrat;color:#F2B705;letter-spacing:3px">THÔNG ĐIỆP</div>
+        <div style="font:italic 600 22.5px/1.6 'Playfair Display';color:#F7F2E7;margin-top:14px">"Từ xà lim số 1 đến phòng học đầy nắng — ngọn lửa năm 1944 vẫn cháy trong mái trường mang tên Người."</div>
+        <div style="position:absolute;left:28px;right:28px;bottom:26px">
+          <div style="background:#F2B705;color:#1B2A4A;border-radius:12px;text-align:center;padding:12px 0;font:800 17px Montserrat">XIN CẢM ƠN THẦY CÔ &amp; CÁC BẠN! 🌻</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 2.6 DANH SÁCH ẢNH ============ -->
+  <h3 class="sub">2.6 · Tổng hợp "Hình ảnh tôi sẽ gửi" — 7 ô ảnh, gửi đúng spec là xong</h3>
+  <div class="tbl-wrap"><table class="spec">
+    <tr><th style="width:90px">Mã ảnh</th><th>Nội dung</th><th style="width:180px">Slide</th><th style="width:260px">Spec kỹ thuật</th></tr>
+    <tr><td class="k">ẢNH 1</td><td>Chân dung chính thức đồng chí Hoàng Văn Thụ <b>(bắt buộc)</b></td><td>Slide 1</td><td>JPG/PNG · cạnh ngắn ≥ 1200 px · dọc</td></tr>
+    <tr><td class="k">ẢNH 2</td><td>Xưởng Nam Hưng / nhà in Ngũ sắc thạch ấn / trang báo cũ <i>(tùy chọn)</i></td><td>Slide 2</td><td>JPG · ≥ 800 px · ngang</td></tr>
+    <tr><td class="k">ẢNH 3</td><td>Xà lim số 1 (Cellule 1) — Nhà tù Hỏa Lò <b>(bắt buộc — hiện vật điểm nhấn)</b></td><td>Slide 3</td><td>JPG · ≥ 1500 px · ngang · tối ưu khi có ánh đèn xà lim</td></tr>
+    <tr><td class="k">ẢNH 4</td><td>Di tích/bãi Tương Mai <i>(tùy chọn)</i></td><td>Slide 3</td><td>JPG · ≥ 1000 px</td></tr>
+    <tr><td class="k">ẢNH 5</td><td>Ảnh trường thời kỳ đầu (1979–1984 nếu có) <i>(nên có)</i></td><td>Slide 4</td><td>JPG · quét/scan tư liệu phòng truyền thống</td></tr>
+    <tr><td class="k">ẢNH 6</td><td>Cổng/sân trường hiện nay <b>(nên có)</b></td><td>Slide 4</td><td>JPG · chụp ngang, nắng sáng · ≥ 1500 px</td></tr>
+    <tr><td class="k">ẢNH 7</td><td>Tập thể lớp/nhóm <i>(tùy chọn)</i></td><td>Slide 5</td><td>JPG · ≥ 1200 px · ngang</td></tr>
+  </table></div>
+  <div class="mark">📌 <b>Trích thơ "Nhắn bạn":</b> hãy xin giáo viên bộ môn 2–4 câu <u>đã được xác thực</u> (hoặc nguồn in chính thức) rồi gửi cùng 7 ảnh trên — nhóm sẽ cắm thẳng vào ô trích dẫn của Slide 3 và vào phần đọc thơ của kịch bản.</div>
+<!-- ================= PHẦN 3 ================= -->
+<section id="phan3">
+  <div class="sec-head"><div class="sec-num">3</div><div><h2>PHẦN 3 — KỊCH BẢN THUYẾT TRÌNH CHI TIẾT</h2><div class="sec-sub">Lời thoại trọn câu theo từng slide · phân vai · chỉ dẫn sân khấu [trong ngoặc] · Q&amp;A dự phòng · checklist</div></div></div>
+  <p class="lead">Tổng thời lượng: <b>8 phút trình bày + 2 phút hỏi đáp</b>. Nhóm 4 người: <b>MC1</b> (mở màn &amp; lịch sử trường), <b>MC2</b> (chân dung người chiến sĩ), <b>MC3</b> (điểm nhấn cảm xúc &amp; tổng kết), <b>Kỹ thuật</b> (chiếu slide, nhạc). Nhịp nói chuẩn: <b>~110–120 từ/phút</b>, chậm hơn khoảng 30% ở slide 3.</p>
+
+  <h3 class="sub">3.1 · Bảng điều phối tổng thể</h3>
+  <div class="tbl-wrap"><table class="spec">
+    <tr><th style="width:95px">Slide</th><th style="width:60px">Thời lượng</th><th style="width:105px">Trình bày</th><th>Nội dung cốt lõi</th><th style="width:280px">Cue kỹ thuật</th></tr>
+    <tr><td class="k">Slide 1</td><td>0:45</td><td>MC1</td><td>Mở màn — "một cái tên, một mái trường"</td><td>Nhạc nền không lời trang trọng, âm lượng 20%</td></tr>
+    <tr><td class="k">Slide 2</td><td>1:45</td><td>MC2</td><td>Tiểu sử — nghề nghiệp — chức trách (Tiết 1)</td><td>Giữ nhạc; chuyển slide do MC2 ra hiệu cuối đoạn</td></tr>
+    <tr><td class="k">Slide 3</td><td>2:15</td><td>MC3 + cả nhóm</td><td>Xà lim số 1 — "Nhắn bạn" — Tương Mai</td><td><b>Hạ đèn (nếu được) · nhạc chuyển trầm · dừng nhạc 2 giây trước đoạn Tương Mai · mặc niệm 3 giây</b></td></tr>
+    <tr><td class="k">Slide 4</td><td>1:45</td><td>MC1</td><td>Timeline lịch sử trường 1979 → nay (Tiết 2)</td><td>Nhạc trở lại, tươi hơn; chỉ tay theo từng thẻ timeline</td></tr>
+    <tr><td class="k">Slide 5</td><td>1:15</td><td>MC2 + MC3</td><td>4 phẩm chất — thông điệp — cảm ơn</td><td>Nhạc dần to ở câu cuối, tắt hẳn khi cả nhóm cúi chào</td></tr>
+    <tr><td class="k">Q&amp;A</td><td>2:00</td><td>Cả nhóm</td><td>Trả lời 2–3 câu hỏi của thầy cô/bạn</td><td>Giữ nguyên slide 5</td></tr>
+  </table></div>
+
+  <h3 class="sub">3.2 · Kịch bản lời thoại từng slide</h3>
+
+  <h4 class="mini">SLIDE 1 · Mở đầu — 45 giây — MC1</h4>
+  <div class="cue"><b>[CUE]</b> Nhạc nền không lời trang trọng, âm lượng nhỏ. MC1 bước lên, đứng yên 2 giây nhìn khán phòng rồi mới nói.</div>
+  <div class="dialogue"><span class="spk">MC1</span>
+    <p>"Kính thưa thầy cô và các bạn! Lịch sử đôi khi không nằm trong những trang sách dày — nó nằm trong một cái tên. Cái tên ấy hôm nay nằm trên cổng trường chúng ta, nằm trong tên gọi của mỗi chúng ta: học sinh Trường THPT Hoàng Văn Thụ. Nhưng đằng sau cái tên đó là một con người — một chiến sĩ cộng sản chỉ sống <b>35 năm</b>, mà cả một đời không một bước lùi. Hôm nay, nhóm chúng em xin được kể câu chuyện của Người — và của ngôi trường mang tên Người."</p>
+  </div>
+  <div class="cue"><b>[CUE]</b> MC1 chìa tay về màn hình — Kỹ thuật chuyển sang Slide 2.</div>
+
+  <h4 class="mini">SLIDE 2 · Chân dung người chiến sĩ — 1 phút 45 giây — MC2</h4>
+  <div class="dialogue"><span class="spk b">MC2</span>
+    <p>"Đồng chí Hoàng Văn Thụ sinh năm <b>1909</b>, người dân tộc Tày ở Lạng Sơn, thuở nhỏ học cả chữ Hán lẫn Quốc ngữ. Ít ai ngờ rằng, trước khi trở thành nhà cách mạng chuyên nghiệp, đồng chí từng là một người thợ: <b>thợ cơ khí</b> ở xưởng Nam Hưng; <b>thợ in</b> — người khắc chữ ngược trên đá cho nhà in Ngũ sắc thạch ấn; và là <b>người làm báo</b> cho các tờ Châu Giang, Tranh đấu, Lao động."</p>
+    <p>[chỉ tay theo mốc 1939 trên timeline] "Từ năm <b>1939</b>, đồng chí đảm nhiệm cương vị <b>Bí thư Xứ ủy Bắc Kỳ</b>. Giai đoạn <b>1940 – 1941</b>, đồng chí là Ủy viên <b>Thường vụ Trung ương Đảng</b>, trực tiếp phụ trách công tác <b>Binh vận</b> và xây dựng <b>căn cứ địa cách mạng</b>."</p>
+    <p>"Một người thợ, một người thợ in, một người làm báo — trở thành nhà lãnh đạo của cả một miền Bắc Kỳ. Chính ở những nghề tay chân giản dị ấy, đồng chí học được cách tổ chức, cách kết nối con người — nền tảng của tài năng lãnh đạo mà chúng ta sẽ thấy ngay sau đây."</p>
+  </div>
+  <div class="cue"><b>[CUE]</b> Hạ giọng ở câu cuối, dừng 1 nhịp. Kỹ thuật chuyển Slide 3, hạ đèn (nếu được), nhạc chuyển sang giai điệu trầm.</div>
+
+  <h4 class="mini">SLIDE 3 · Xà lim số 1 &amp; "Nhắn bạn" — 2 phút 15 giây — MC3 + cả nhóm (điểm nhấn)</h4>
+  <div class="cue"><b>[CUE]</b> MC3 đi chậm ra vị trí, nói với tốc độ chậm hơn 30%, ngắt nghỉ nhiều. Đây là slide quan trọng nhất — đừng vội.</div>
+  <div class="dialogue"><span class="spk c">MC3</span>
+    <p>"Thưa thầy cô và các bạn, nếu chỉ được chọn <b>một hiện vật</b> để kể về đồng chí, nhóm chúng em chọn một không gian nhỏ và tăm tối: <b>Xà lim số 1 — Cellule 1 — của nhà tù Hỏa Lò</b>. Đêm <b>25/8/1943</b>, đồng chí Hoàng Văn Thụ bị thực dân Pháp bắt và bị giam ở đây."</p>
+    <p>"Trong xà lim số 1 ấy, đồng chí không có giấy, không có bút. Nhưng Người có một viên <b>gạch non</b>. Bằng viên gạch non ướt ấy, đồng chí viết lên vách tù bài thơ — <b>'Nhắn bạn'</b>. Gạch non sẽ khô và vụn đi theo năm tháng, nhưng niềm tin vào ngày thắng lợi của Người thì không bao giờ vụn mất."</p>
+  </div>
+  <div class="mark">📖 <b>[ĐỌC THƠ]</b> Cả nhóm bước lên, đọc đồng thanh <b>trích 2–4 câu bài thơ "Nhắn bạn"</b> theo tư liệu đã được thầy cô xác thực: <i>[CHÈN TRÍCH ĐOẠN ĐÃ XÁC THỰC TẠI ĐÂY — hiện chưa có, chờ nhóm nhận tư liệu]</i>.</div>
+  <div class="dialogue"><span class="spk c">MC3</span>
+    <p>"Sáng ngày <b>24/5/1944</b>, tại bãi Tương Mai, trước họng súng của kẻ thù, khi bị yêu cầu bịt mắt, đồng chí đã <b>hiên ngang từ chối</b>. Người muốn nhìn thẳng vào những phát đạn ấy — như Người đã nhìn thẳng vào mọi gian khổ của cách mạng. Đồng chí hy sinh khi mới <b>35 tuổi</b>."</p>
+    <p>"Xiềng xích có thể khóa tay chân một con người — nhưng không bao giờ khóa được ý chí của một người cộng sản."</p>
+  </div>
+  <div class="cue"><b>[CUE]</b> Nhạc dừng hẳn 2 giây. Cả nhóm cúi đầu mặc niệm 3 giây — cả lớp sẽ tự động lặng theo. Rồi MC3 ngẩng lên, nói câu chốt. Chuyển Slide 4.</div>
+
+  <h4 class="mini">SLIDE 4 · Lịch sử ngôi trường — 1 phút 45 giây — MC1</h4>
+  <div class="dialogue"><span class="spk">MC1</span>
+    <p>"Sự hy sinh ấy đã được tri ân bằng một cái tên trường học. Hành trình của ngôi trường chúng ta bắt đầu từ năm <b>1979</b> — khi được tách thành <b>Phân hiệu Cấp 3 Uông Bí</b> với chỉ <b>3 lớp</b>, và chỉ sau 5 năm đã phát triển lên <b>6 lớp</b>."</p>
+    <p>[chỉ tay thẻ 2] "Đến ngày <b>17/11/1984</b>, <b>Quyết định số 645/QĐ-UBND</b> chính thức thành lập <b>Trường Trung học kỹ thuật Hoàng Văn Thụ</b> — cái tên liệt sĩ lần đầu tiên được in vào lịch sử của một ngôi trường tại Uông Bí."</p>
+    <p>[chỉ tay thẻ 3] "Giai đoạn <b>1989 – 2007</b>, trường đổi tên thành <b>THPT Hoàng Văn Thụ</b>, sáp nhập THCS Nguyễn Văn Cừ và trở thành <b>trường liên cấp lớn nhất tỉnh</b> với <b>40 lớp</b> và hơn <b>1.800 học sinh</b>."</p>
+    <p>[chỉ tay thẻ 4] "Từ <b>2007</b> đến nay, sau khi tách cấp 2, trường không ngừng vươn lên: tháng <b>4/2012</b> đạt <b>chuẩn Quốc gia</b>, và năm <b>2014</b> vinh dự nhận <b>Bằng khen của Thủ tướng Chính phủ</b>. Từ 3 lớp học năm 1979 đến ngôi trường chuẩn quốc gia hôm nay — đó chính là cách thế hệ sau giữ lửa cho tên tuổi Người."</p>
+  </div>
+  <div class="cue"><b>[CUE]</b> Chuyển Slide 5. Nhạc nhẹ dần về nền.</div>
+
+  <h4 class="mini">SLIDE 5 · Tổng kết &amp; thông điệp — 1 phút 15 giây — MC2 + MC3</h4>
+  <div class="dialogue"><span class="spk b">MC2</span>
+    <p>"Từ xà lim số 1 đến những phòng học đầy nắng hôm nay — khoảng cách ấy chính là câu trả lời cho câu hỏi: <b>vì sao chúng ta học lịch sử?</b> Bởi bốn phẩm chất của đồng chí — <b>kiên trung bất khuất, tận tụy trách nhiệm, tài năng tổ chức lãnh đạo, và lòng yêu nước cùng niềm tin tất thắng</b> — không nằm trong quá khứ. Đó là những phẩm chất một học sinh Hoàng Văn Thụ hôm nay sống được mỗi ngày: kiên định trước khó khăn, trách nhiệm với bài tập và lời hứa, biết tổ chức công việc và tập thể, và luôn tin vào điều tốt đẹp."</p>
+  </div>
+  <div class="dialogue"><span class="spk c">MC3</span>
+    <p>"Chúng em kể lại câu chuyện của Người không chỉ để tri ân — mà để tự nhủ: hãy sống cho xứng đáng với cái tên in trên chiếc áo mình mặc. <b>Xin chân thành cảm ơn thầy cô và các bạn đã lắng nghe!</b>"</p>
+  </div>
+  <div class="cue"><b>[CUE]</b> Nhạc lớn dần ở câu cuối rồi tắt hẳn. Cả 4 thành viên bước ra hàng, cúi chào. Giữ slide 5 trong suốt phần Q&amp;A.</div>
+
+  <h3 class="sub">3.3 · Chuẩn bị hỏi – đáp (2 phút) — 3 câu dễ gặp + khung trả lời</h3>
+  <div class="tbl-wrap"><table class="spec">
+    <tr><th style="width:400px">Câu hỏi dự phòng</th><th>Khung trả lời (ngắn gọn, 20–30 giây)</th></tr>
+    <tr><td class="k">"Vì sao đồng chí từ chối bịt mắt trước khi bị xử bắn?"</td><td>Đó là biểu hiện cao nhất của phẩm chất <b>kiên trung, bất khuất</b>: không che giấu sự dũng cảm, không cúi đầu trước kẻ thù. Cái chết của Người trở thành lời hiệu triệu sống động cho những người cùng thời — và cho chính chúng ta hôm nay.</td></tr>
+    <tr><td class="k">"Bài thơ 'Nhắn bạn' được viết ra như thế nào?"</td><td>Bài thơ được đồng chí viết <b>tại xà lim Hỏa Lò bằng gạch non</b> sau ngày 25/8/1943. Nhóm chỉ trích dẫn 2–4 câu từ tư liệu đã được thầy cô xác thực, vì chúng em muốn mọi số liệu và trích dẫn trong bài đều có nguồn gốc rõ ràng.</td></tr>
+    <tr><td class="k">"Vì sao một ngôi trường ở Uông Bí lại mang tên một người con Lạng Sơn?"</td><td>Đặt tên trường theo tên các liệt sĩ, cán bộ lãnh đạo tiêu biểu của Đảng là truyền thống tri ân và giáo dục truyền thống cách mạng. Kể từ Quyết định 645/QĐ-UBND ngày 17/11/1984, cái tên Hoàng Văn Thụ gắn liền với quá trình xây dựng và trưởng thành của trường — như chính phần 2 của bài thuyết trình.</td></tr>
+  </table></div>
+
+  <h3 class="sub">3.4 · Checklist trước khi lên lớp</h3>
+  <div class="dd">
+    <div class="do" style="background:#fff;border-color:#E4DBC6"><b>🎒 CHUẨN BỊ</b><ul>
+      <li>File Canva/PPTX <b>xuất offline</b> ra USB + gửi phụ lục (phòng against mất mạng).</li>
+      <li>Sơ đồ tư duy <b>in A3 màu</b> (file SVG đính kèm), ghi tên nhóm mặt sau.</li>
+      <li>"Hiện vật" trưng bày: ảnh Xà lim số 1 in A4 đóng khung viền vàng — đặt ở bàn trước khi trình bày.</li>
+      <li>Nhạc nền: 2 file MP3 không lời (trang trọng / trầm) tải sẵn offline.</li>
+      <li>Trích thơ "Nhắn bạn" đã xác thực — in to cho cả nhóm đọc đồng thanh.</li>
+      <li>Trang phục gợi ý: áo trắng + khăn quàng đỏ (hoặc đồng phục), thẻ tên nhóm.</li>
+      <li>Đồng hồ/bấm giờ đặt trên bàn kỹ thuật.</li>
+    </ul></div>
+    <div class="dont" style="background:#fff;border-color:#E4DBC6"><b>👥 PHÂN CÔNG &amp; TẬP DỰT</b><ul>
+      <li>MC1: mở màn + lịch sử trường · MC2: chân dung + tổng kết · MC3: điểm nhấn + cảm ơn · Kỹ thuật: slide, nhạc, đèn.</li>
+      <li>Tập trọn vẹn <b>3 lần</b>, lần cuối bấm giờ đúng 8:00 (sai số ±15 giây).</li>
+      <li>Thống nhất tín hiệu ra hiệu chuyển slide (bắt tay chéo/ngón cái) — không gọi "bạn ơi chuyển slide".</li>
+      <li>Mỗi MC gạch chân 3 từ khóa chính trong lời thoại của mình — nói theo mạch, không học vẹt từng chữ.</li>
+      <li>Chuẩn bị sẵn 1 câu trả lời dự phòng cho Q&amp;A mỗi người.</li>
+    </ul></div>
+  </div>
+
+  <h3 class="sub">3.5 · Nguồn tư liệu &amp; nguyên tắc xác thực</h3>
+  <ul class="timelist">
+    <li>Toàn bộ mốc thời gian, chức vụ, sự kiện trong tài liệu này dùng <b>đúng dữ liệu nhóm đã xác thực</b> (Tiết 1 – Tiết 2 – hiện vật/câu chuyện).</li>
+    <li>Trích thơ "Nhắn bạn": <b>chỉ dùng bản do giáo viên/phòng truyền thống cung cấp</b> hoặc nguồn in chính thức; chưa có thì giữ placeholder.</li>
+    <li>Ảnh chân dung &amp; hiện vật: xin ảnh gốc tại phòng truyền thống trường, Bảo tàng/di tích Hỏa Lò, tư liệu địa phương — <b>ghi chú nguồn dưới từng ảnh</b>.</li>
+    <li>Không dùng ảnh AI/chân dung dựng lại để thay ảnh liệt sĩ; không trích dẫn từ mạng xã hội không nguồn.</li>
+  </ul>
+</section>
+
+<footer class="doc">
+  <div>📚 <b>Bộ tài liệu thiết kế 5 slide + Kịch bản</b> — Bài tập lớn Lịch sử &amp; Hoạt động trải nghiệm · Trường THPT Hoàng Văn Thụ (Uông Bí, Quảng Ninh)</div>
+  <div>Soạn ngày 27/08/2026 · Dùng kèm: <b>Mindmap_A3_Hoang_Van_Thu.svg</b> · <b>Draft_5_slide_HVT.pptx</b></div>
+</footer>
+</div>
+<script>
+function cp(hex,el){navigator.clipboard&&navigator.clipboard.writeText(hex);var n=el.querySelector('.hex'),o=n.textContent;n.textContent='✔ Đã copy!';setTimeout(function(){n.textContent=o},1200)}
+</script>
+</body>
+</html>
