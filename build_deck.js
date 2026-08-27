@@ -3,7 +3,7 @@
 const pptxgen = require("pptxgenjs");
 const p = new pptxgen();
 p.layout = "LAYOUT_WIDE";
-p.author = "Arena Agent";
+p.author = "XroHub";
 p.company = "XroHub";
 p.title = "Lịch sử tỉnh Quảng Ninh";
 p.subject = "Lịch sử dựng nước và giữ nước gắn với tỉnh Quảng Ninh";
@@ -57,7 +57,6 @@ function chapterHeader(slide, num, kicker, title, era){
     x:0.55, y:0.72, w:10.7, h:0.72, margin:0,
     fontFace:F, fontSize:29, bold:true, color:C.dark,
   });
-  slide.addShape(p.shapes.RECTANGLE, { x:0.57, y:1.47, w:1.05, h:0.05, fill:{ color:C.gold } });
   const eraW = 0.3 + era.length * 0.082;
   slide.addShape(p.shapes.ROUNDED_RECTANGLE, {
     x:1.82, y:1.335, w:eraW, h:0.34, rectRadius:0.17,
@@ -130,7 +129,6 @@ let s = p.addSlide();
 s.addImage({ path: IMG + "halong_hero.jpg", x:0, y:0, w:W, h:H });
 s.addShape(p.shapes.RECTANGLE, { x:0, y:0, w:W, h:H, fill:{ color:C.darker, transparency:42 } });
 s.addShape(p.shapes.RECTANGLE, { x:0, y:4.35, w:W, h:3.15, fill:{ color:C.darker, transparency:18 } });
-s.addShape(p.shapes.RECTANGLE, { x:0.95, y:2.02, w:1.35, h:0.06, fill:{ color:C.gold } });
 s.addText("TỈNH QUẢNG NINH  ·  MIỀN ĐÔNG BẮC TỔ QUỐC", {
   x:0.95, y:2.22, w:11, h:0.4, margin:0,
   fontFace:F, fontSize:15, bold:true, color:C.goldLt, charSpacing:3,
@@ -156,7 +154,6 @@ s.addShape(p.shapes.OVAL, { x:10.6, y:-2.2, w:5.2, h:5.2, fill:{ color:C.cream2 
 s.addShape(p.shapes.OVAL, { x:-1.6, y:5.6, w:3.6, h:3.6, fill:{ color:C.cream2 } });
 s.addText("MỤC LỤC", { x:0.55, y:0.42, w:6, h:0.32, margin:0, fontFace:F, fontSize:12.5, bold:true, color:C.jade, charSpacing:3 });
 s.addText("Lộ trình lịch sử", { x:0.55, y:0.74, w:9, h:0.7, margin:0, fontFace:F, fontSize:32, bold:true, color:C.dark });
-s.addShape(p.shapes.RECTANGLE, { x:0.57, y:1.50, w:1.1, h:0.05, fill:{ color:C.gold } });
 
 const toc = [
   ["01","Tiền sử & Sơ sử","Hàng nghìn năm trước – thế kỷ II TCN"],
@@ -171,7 +168,6 @@ toc.forEach((t, i) => {
   const col = i % 3, row = Math.floor(i / 3);
   const x = x0 + col*(cw+gx), y = y0 + row*(ch+gy);
   s.addShape(p.shapes.ROUNDED_RECTANGLE, { x, y, w:cw, h:ch, rectRadius:0.10, fill:{ color:C.white }, shadow: sh() });
-  s.addShape(p.shapes.RECTANGLE, { x, y, w:0.10, h:ch, fill:{ color:C.gold } });
   seal(s, x+0.32, y+0.34, 0.78, t[0], { size:23 });
   s.addText(t[1], { x:x+1.32, y:y+0.36, w:cw-1.55, h:0.75, margin:0, valign:"middle", fontFace:F, fontSize:15.5, bold:true, color:C.dark, lineSpacingMultiple:1.0 });
   s.addText(t[2], { x:x+1.32, y:y+1.18, w:cw-1.55, h:0.6, margin:0, valign:"top", fontFace:F, fontSize:11.5, color:C.jade, bold:true, lineSpacingMultiple:1.1 });
@@ -320,7 +316,6 @@ s = p.addSlide();
 fullBg(s, C.cream);
 s.addText("TỔNG QUAN", { x:0.55, y:0.42, w:6, h:0.32, margin:0, fontFace:F, fontSize:12.5, bold:true, color:C.jade, charSpacing:3 });
 s.addText("Dòng thời gian lịch sử Quảng Ninh", { x:0.55, y:0.74, w:11, h:0.7, margin:0, fontFace:F, fontSize:32, bold:true, color:C.dark });
-s.addShape(p.shapes.RECTANGLE, { x:0.57, y:1.50, w:1.1, h:0.05, fill:{ color:C.gold } });
 
 const lineY = 4.12;
 s.addShape(p.shapes.RECTANGLE, { x:0.9, y:lineY+0.135, w:11.55, h:0.045, fill:{ color:C.gold } });
@@ -356,7 +351,6 @@ fullBg(s, C.dark);
 s.addImage({ path: IMG + "halong_hero.jpg", x:7.1, y:0, w:6.25, h:H, transparency:62 });
 s.addShape(p.shapes.RECTANGLE, { x:7.1, y:0, w:6.25, h:H, fill:{ color:C.darker, transparency:35 } });
 s.addShape(p.shapes.RECTANGLE, { x:0, y:0, w:7.6, h:H, fill:{ color:C.dark } });
-s.addShape(p.shapes.RECTANGLE, { x:0.55, y:0.72, w:1.25, h:0.06, fill:{ color:C.gold } });
 s.addText("Ý NGHĨA LỊCH SỬ", { x:0.55, y:0.92, w:8, h:0.35, margin:0, fontFace:F, fontSize:13, bold:true, color:C.goldLt, charSpacing:3 });
 s.addText("Một vùng đất, bốn giá trị cốt lõi", { x:0.55, y:1.30, w:8, h:0.7, margin:0, fontFace:F, fontSize:28, bold:true, color:C.white });
 
@@ -384,7 +378,6 @@ s = p.addSlide();
 s.addImage({ path: IMG + "quang_ninh_nay.jpg", x:0, y:0, w:W, h:H });
 s.addShape(p.shapes.RECTANGLE, { x:0, y:0, w:W, h:H, fill:{ color:C.darker, transparency:35 } });
 s.addShape(p.shapes.RECTANGLE, { x:0, y:2.35, w:W, h:2.85, fill:{ color:C.darker, transparency:22 } });
-s.addShape(p.shapes.RECTANGLE, { x:5.99, y:2.75, w:1.35, h:0.06, fill:{ color:C.gold } });
 s.addText("QUẢNG NINH", {
   x:1, y:2.95, w:11.33, h:1.0, margin:0, align:"center",
   fontFace:F, fontSize:52, bold:true, color:C.white, charSpacing:6,
@@ -397,7 +390,59 @@ s.addText("CẢM ƠN ĐÃ LẮNG NGHE", {
   x:1, y:5.05, w:11.33, h:0.4, margin:0, align:"center",
   fontFace:F, fontSize:13, bold:true, color:C.cream, charSpacing:4,
 });
+s.addNotes("Kết luận: Quảng Ninh là nơi thiên nhiên, lịch sử và con người cùng tạo nên một bản sắc giàu sức sống.");
 
-p.writeFile({ fileName: "Lich_su_Quang_Ninh.pptx" }).then(fn => {
+/* ============ SLIDE 12 — NGUỒN TƯ LIỆU ============ */
+s = p.addSlide();
+fullBg(s, C.cream);
+s.addShape(p.shapes.OVAL, { x:10.92, y:-1.85, w:4.35, h:4.35, fill:{ color:C.cream2 } });
+s.addShape(p.shapes.OVAL, { x:-1.65, y:6.22, w:3.55, h:3.55, fill:{ color:C.cream2 } });
+s.addText("TƯ LIỆU ĐỐI CHIẾU", {
+  x:0.55, y:0.44, w:6.8, h:0.30, margin:0,
+  fontFace:F, fontSize:12.5, bold:true, color:C.jade, charSpacing:2.5,
+});
+s.addText("Nguồn tham khảo chính", {
+  x:0.55, y:0.78, w:8.4, h:0.62, margin:0,
+  fontFace:F, fontSize:31, bold:true, color:C.dark,
+});
+s.addText("Các mốc lịch sử trong bài được tổng hợp từ nguồn chính thống; truy cập ngày 27/08/2026.", {
+  x:0.55, y:1.35, w:10.9, h:0.30, margin:0,
+  fontFace:F, fontSize:11.5, italic:true, color:C.gray,
+});
+
+const refs = [
+  ["01", "Quá trình hình thành và phát triển tỉnh Quảng Ninh", "Cổng Thông tin điện tử tỉnh Quảng Ninh", "https://www.quangninh.gov.vn/Trang/ChiTietBVGioiThieu.aspx?bvid=458&Cat=Qu%C3%A1+tr%C3%ACnh+h%C3%ACnh+th%C3%A0nh+v%C3%A0+ph%C3%A1t+tri%E1%BB%83n", "Tư liệu nền cho các giai đoạn lịch sử, vùng mỏ và kháng chiến."],
+  ["02", "Tỉnh Quảng Ninh được thành lập", "Cổng Thông tin điện tử tỉnh Quảng Ninh", "https://www.quangninh.gov.vn/Trang/ChiTietBVGioiThieu.aspx?bvid=544", "Xác nhận quyết định ngày 30/10/1963 hợp nhất Hải Ninh và Hồng Quảng."],
+  ["03", "Viết tiếp truyền thống “Kỷ luật và Đồng tâm”", "Cổng Thông tin điện tử tỉnh Quảng Ninh", "https://quangninh.gov.vn/Trang/ChiTietTinTuc.aspx?nid=146111", "Tư liệu về Tổng bãi công thợ mỏ ngày 12/11/1936 và truyền thống vùng mỏ."],
+  ["04", "Ha Long Bay – Cat Ba Archipelago", "UNESCO World Heritage Centre", "https://whc.unesco.org/en/list/672/", "Thông tin di sản: Vịnh Hạ Long được ghi danh Di sản Thế giới năm 1994."],
+];
+const rw = 5.85, rh = 1.83, rx0 = 0.55, ry0 = 1.90, rgx = 0.30, rgy = 0.24;
+refs.forEach((r, i) => {
+  const col = i % 2, row = Math.floor(i / 2);
+  const x = rx0 + col * (rw + rgx), y = ry0 + row * (rh + rgy);
+  s.addShape(p.shapes.ROUNDED_RECTANGLE, { x, y, w:rw, h:rh, rectRadius:0.10, fill:{ color:C.white }, shadow:sh() });
+  seal(s, x+0.24, y+0.22, 0.62, r[0], { size:17 });
+  s.addText(r[2], {
+    x:x+1.05, y:y+0.20, w:rw-1.33, h:0.25, margin:0,
+    fontFace:F, fontSize:9.4, bold:true, color:C.jade, charSpacing:0.35,
+  });
+  s.addText(r[1], {
+    x:x+1.05, y:y+0.49, w:rw-1.33, h:0.42, margin:0,
+    fontFace:F, fontSize:12.1, bold:true, color:C.dark, fit:'shrink',
+    hyperlink:{ url:r[3] },
+  });
+  s.addText(r[4], {
+    x:x+0.24, y:y+1.08, w:rw-0.48, h:0.50, margin:0,
+    fontFace:F, fontSize:10.15, color:C.gray, valign:"top", lineSpacingMultiple:1.02,
+  });
+});
+s.addText("Ghi chú hình ảnh: sử dụng tư liệu do người dùng cung cấp; các khung ghi “minh hoạ” nhằm trực quan hoá bối cảnh lịch sử.", {
+  x:0.55, y:6.33, w:12.15, h:0.36, margin:0,
+  fontFace:F, fontSize:10.4, italic:true, color:C.gray, align:"center",
+});
+footer(s, 12);
+s.addNotes("Nguồn kiểm chứng: \n1. https://www.quangninh.gov.vn/Trang/ChiTietBVGioiThieu.aspx?bvid=458&Cat=Qu%C3%A1+tr%C3%ACnh+h%C3%ACnh+th%C3%A0nh+v%C3%A0+ph%C3%A1t+tri%E1%BB%83n\n2. https://www.quangninh.gov.vn/Trang/ChiTietBVGioiThieu.aspx?bvid=544\n3. https://quangninh.gov.vn/Trang/ChiTietTinTuc.aspx?nid=146111\n4. https://whc.unesco.org/en/list/672/");
+
+p.writeFile({ fileName: "Lich_su_Quang_Ninh_chuyen_nghiep_hoan_chinh.pptx" }).then(fn => {
   console.log("Đã tạo:", fn);
 });
