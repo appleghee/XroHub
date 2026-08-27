@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1587" height="1123" viewBox="0 0 1587 1123" font-family="Montserrat, 'Be Vietnam Pro', Arial, sans-serif">
+  <defs>
+    <style>
+      .hd{font-size:16px;font-weight:800;fill:#ffffff;letter-spacing:.5px}
+      .ln{font-size:13.5px;fill:#2a313b}
+      .num{font-size:13.5px;font-weight:800;fill:#7A0C1E}
+      .cap{font-size:13px;fill:#6b5a4a}
+    </style>
+  </defs>
+
+  <rect width="1587" height="1123" fill="#F7F2E7"/>
+  <rect x="14" y="14" width="1559" height="1095" fill="none" stroke="#8C5A3C" stroke-width="2.5"/>
+  <rect x="22" y="22" width="1543" height="1079" fill="none" stroke="#F2B705" stroke-width="1.2"/>
+
+  <text x="40" y="60" font-size="20" fill="#F2B705">★</text>
+  <text x="1530" y="60" font-size="20" fill="#F2B705">★</text>
+
+  <text x="793" y="62" text-anchor="middle" font-size="31" font-weight="800" fill="#7A0C1E">SƠ ĐỒ TƯ DUY TỔNG THỂ</text>
+  <text x="793" y="92" text-anchor="middle" font-size="16.5" font-weight="800" fill="#1B2A4A">ĐỒNG CHÍ HOÀNG VĂN THỤ (1909 – 1944) &amp; TRƯỜNG THPT HOÀNG VĂN THỤ – UÔNG BÍ, QUẢNG NINH</text>
+  <text x="793" y="118" text-anchor="middle" font-size="13" fill="#6b5a4a">Bài tập lớn Lịch sử • Hoạt động trải nghiệm — Khổ in A3 ngang (420 × 297 mm)</text>
+  <line x1="470" y1="132" x2="1117" y2="132" stroke="#C8102E" stroke-width="3"/>
+
+  <!-- ============ CONNECTORS ============ -->
+  <g fill="none" stroke-width="4">
+    <path d="M623 555 C520 555 505 245 390 245" stroke="#1B2A4A"/>
+    <path d="M623 575 C515 575 505 453 390 453" stroke="#8C5A3C"/>
+    <path d="M623 595 C515 595 505 661 390 661" stroke="#C8102E"/>
+    <path d="M963 545 C1075 545 1080 253 1197 253" stroke="#7A0C1E"/>
+    <path d="M963 575 C1080 575 1080 461 1197 461" stroke="#D99A00"/>
+    <path d="M963 605 C1080 605 1080 715 1197 715" stroke="#1B2A4A"/>
+    <path d="M793 635 L793 884" stroke="#C8102E"/>
+  </g>
+  <g>
+    <circle cx="623" cy="555" r="5" fill="#7A0C1E"/><circle cx="623" cy="575" r="5" fill="#7A0C1E"/>
+    <circle cx="623" cy="595" r="5" fill="#7A0C1E"/><circle cx="963" cy="545" r="5" fill="#7A0C1E"/>
+    <circle cx="963" cy="575" r="5" fill="#7A0C1E"/><circle cx="963" cy="605" r="5" fill="#7A0C1E"/>
+    <circle cx="793" cy="635" r="5" fill="#7A0C1E"/>
+    <circle cx="390" cy="245" r="6" fill="#1B2A4A"/><circle cx="390" cy="453" r="6" fill="#8C5A3C"/>
+    <circle cx="390" cy="661" r="6" fill="#C8102E"/><circle cx="1197" cy="253" r="6" fill="#7A0C1E"/>
+    <circle cx="1197" cy="461" r="6" fill="#D99A00"/><circle cx="1197" cy="715" r="6" fill="#1B2A4A"/>
+    <circle cx="793" cy="884" r="6" fill="#C8102E"/>
+  </g>
+
+  <!-- ============ CENTER NODE ============ -->
+  <rect x="623" y="515" width="340" height="120" rx="18" fill="#C8102E" stroke="#F2B705" stroke-width="4"/>
+  <text x="793" y="556" text-anchor="middle" font-size="19" font-weight="800" fill="#ffffff">ĐỒNG CHÍ</text>
+  <text x="793" y="588" text-anchor="middle" font-size="22" font-weight="800" fill="#FFE9A8">HOÀNG VĂN THỤ</text>
+  <text x="793" y="614" text-anchor="middle" font-size="14" font-weight="600" fill="#ffffff">1909 – 1944</text>
+
+  <!-- ============ B1: CON NGƯỜI (gốc Tây) ============ -->
+  <rect x="60" y="170" width="330" height="150" rx="14" fill="#FFFFFF" stroke="#1B2A4A" stroke-width="2"/>
+  <path d="M60 184 a14 14 0 0 1 14 -14 h302 a14 14 0 0 1 14 14 v20 h-330 z" fill="#1B2A4A"/>
+  <text x="225" y="193" text-anchor="middle" class="hd">TIẾT 1 • CON NGƯỜI</text>
+  <text x="78" y="228" class="ln">• Sinh 1909, người Tày (Lạng Sơn)</text>
+  <text x="78" y="252" class="ln">• Học chữ Hán và Quốc ngữ</text>
+  <text x="78" y="276" class="ln">• Chiến sĩ cách mạng chuyên nghiệp</text>
+  <text x="78" y="300" class="ln">• Hy sinh 24/5/1944, thọ 35 tuổi</text>
+
+  <!-- ============ B2: NGHỀ NGHIỆP ============ -->
+  <rect x="60" y="360" width="330" height="186" rx="14" fill="#FFFFFF" stroke="#8C5A3C" stroke-width="2"/>
+  <path d="M60 374 a14 14 0 0 1 14 -14 h302 a14 14 0 0 1 14 14 v20 h-330 z" fill="#8C5A3C"/>
+  <text x="225" y="383" text-anchor="middle" class="hd">NGHỀ NGHIỆP TRƯỚC CÁCH MẠNG</text>
+  <text x="78" y="418" class="ln">• Thợ cơ khí – xưởng Nam Hưng</text>
+  <text x="78" y="442" class="ln">• Thợ in chữ ngược trên đá</text>
+  <text x="78" y="466" class="ln">   (nhà in Ngũ sắc thạch ấn)</text>
+  <text x="78" y="490" class="ln">• Làm báo: Châu Giang, Tranh đấu,</text>
+  <text x="78" y="514" class="ln">   Lao động</text>
+
+  <!-- ============ B3: SỰ NGHIỆP ============ -->
+  <rect x="60" y="586" width="330" height="150" rx="14" fill="#FFFFFF" stroke="#C8102E" stroke-width="2"/>
+  <path d="M60 600 a14 14 0 0 1 14 -14 h302 a14 14 0 0 1 14 14 v20 h-330 z" fill="#C8102E"/>
+  <text x="225" y="609" text-anchor="middle" class="hd">SỰ NGHIỆP LÃNH ĐẠO</text>
+  <text x="78" y="644" class="ln">• 1939: Bí thư Xứ ủy Bắc Kỳ</text>
+  <text x="78" y="668" class="ln">• 1940–1941: Thường vụ Trung ương Đảng</text>
+  <text x="78" y="692" class="ln">• Phụ trách công tác Binh vận</text>
+  <text x="78" y="716" class="ln">• Xây dựng căn cứ địa cách mạng</text>
+
+  <!-- ============ B4: HIỆN VẬT & CÂU CHUYỆN ============ -->
+  <rect x="1197" y="160" width="330" height="186" rx="14" fill="#FFFFFF" stroke="#F2B705" stroke-width="3"/>
+  <path d="M1197 174 a14 14 0 0 1 14 -14 h302 a14 14 0 0 1 14 14 v20 h-330 z" fill="#7A0C1E"/>
+  <text x="1362" y="183" text-anchor="middle" class="hd">HIỆN VẬT &amp; CÂU CHUYỆN</text>
+  <text x="1215" y="218" class="ln">★ Xà lim số 1 – Nhà tù Hỏa Lò</text>
+  <text x="1215" y="242" class="ln">• Viết "Nhắn bạn" bằng gạch non</text>
+  <text x="1215" y="266" class="ln">• 25/8/1943: Bị thực dân Pháp bắt</text>
+  <text x="1215" y="290" class="ln">• 24/5/1944: Trước họng súng ở</text>
+  <text x="1215" y="314" class="ln">   Tương Mai – hiên ngang, từ chối bịt mắt</text>
+
+  <!-- ============ B5: 4 PHẨM CHẤT ============ -->
+  <rect x="1197" y="386" width="330" height="150" rx="14" fill="#FFFFFF" stroke="#D99A00" stroke-width="2"/>
+  <path d="M1197 400 a14 14 0 0 1 14 -14 h302 a14 14 0 0 1 14 14 v20 h-330 z" fill="#D99A00"/>
+  <text x="1362" y="409" text-anchor="middle" class="hd" fill="#1B2A4A">BỐN PHẨM CHẤT CỐT LÕI</text>
+  <text x="1215" y="444" class="ln"><tspan class="num">1.</tspan> Kiên trung, bất khuất</text>
+  <text x="1215" y="468" class="ln"><tspan class="num">2.</tspan> Tận tụy, trách nhiệm trọn đời</text>
+  <text x="1215" y="492" class="ln"><tspan class="num">3.</tspan> Tài năng tổ chức &amp; lãnh đạo sắc bén</text>
+  <text x="1215" y="516" class="ln"><tspan class="num">4.</tspan> Yêu nước &amp; niềm tin tất thắng</text>
+
+  <!-- ============ B6: LỊCH SỬ TRƯỜNG ============ -->
+  <rect x="1197" y="576" width="330" height="278" rx="14" fill="#FFFFFF" stroke="#1B2A4A" stroke-width="2"/>
+  <path d="M1197 590 a14 14 0 0 1 14 -14 h302 a14 14 0 0 1 14 14 v20 h-330 z" fill="#1B2A4A"/>
+  <text x="1362" y="599" text-anchor="middle" class="hd">TIẾT 2 • LỊCH SỬ NGÔI TRƯỜNG</text>
+  <text x="1215" y="634" class="ln">• 1979–1984: Phân hiệu Cấp 3 Uông Bí</text>
+  <text x="1215" y="658" class="ln">   (từ 3 lớp lên 6 lớp)</text>
+  <text x="1215" y="682" class="ln">• 17/11/1984: Thành lập Trường Trung</text>
+  <text x="1215" y="706" class="ln">   học kỹ thuật Hoàng Văn Thụ (QĐ 645)</text>
+  <text x="1215" y="730" class="ln">• 1989–2007: THPT Hoàng Văn Thụ; sáp</text>
+  <text x="1215" y="754" class="ln">   nhập THCS Nguyễn Văn Cừ – liên cấp</text>
+  <text x="1215" y="778" class="ln">   lớn nhất tỉnh (40 lớp, &gt;1.800 HS)</text>
+  <text x="1215" y="802" class="ln">• 4/2012: Đạt chuẩn Quốc gia</text>
+  <text x="1215" y="826" class="ln">• 2014: Bằng khen của Thủ tướng CP</text>
+
+  <!-- ============ B7: BÀI HỌC ============ -->
+  <rect x="513" y="884" width="560" height="140" rx="14" fill="#FFFFFF" stroke="#C8102E" stroke-width="2"/>
+  <path d="M513 898 a14 14 0 0 1 14 -14 h532 a14 14 0 0 1 14 14 v20 h-560 z" fill="#7A0C1E"/>
+  <text x="793" y="907" text-anchor="middle" class="hd">BÀI HỌC CHO THẾ HỆ HỌC SINH HÔM NAY</text>
+  <text x="793" y="942" text-anchor="middle" class="ln">• Sống có lý tưởng, kiên định và trách nhiệm như Người</text>
+  <text x="793" y="966" text-anchor="middle" class="ln">• Tự hào truyền thống ngôi trường mang tên Hoàng Văn Thụ</text>
+  <text x="793" y="990" text-anchor="middle" class="ln">• Biến lòng yêu nước thành hành động học tập hôm nay</text>
+
+  <!-- ============ FOOTER ============ -->
+  <text x="793" y="1064" text-anchor="middle" font-size="13" font-weight="600" fill="#1B2A4A">Bảng màu: Đỏ cờ #C8102E • Đỏ trầm #7A0C1E • Vàng đồng #F2B705 • Nâu gạch #8C5A3C • Navy #1B2A4A • Kem giấy #F7F2E7</text>
+  <text x="793" y="1088" text-anchor="middle" font-size="12" fill="#8C5A3C">Khổ A3 ngang 420 × 297 mm — in màu, viền lề 1 cm • Nhóm: …………  Lớp: …………  •  Năm học 2026 – 2027</text>
+</svg>
